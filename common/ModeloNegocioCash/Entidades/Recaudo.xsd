@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.bolivariano.com/Recaudo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rcd="http://www.bolivariano.com/Recaudo" xmlns:s1="http://www.bolivariano.com/Cuenta">
+	<xs:import namespace="http://www.bolivariano.com/Cuenta" schemaLocation="Cuenta.xsd"/>
+	<xs:element name="Recaudo" type="rcd:Recaudo"/>
+	<xs:complexType name="Recaudo">
+		<xs:annotation>
+			<xs:documentation>Modelo de Negocio para Recaudos (Generalizacion)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="aplicativoCobis" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="autorizacion" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Indicador si autoriza la transaccion
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="autorizacionSRI" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>autorizacion del sri</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cantidadCheque" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Cantidad de cheques</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="baseImponible" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>base imponible</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="canalCobranza" type="xs:string" minOccurs="0"/>
+			<xs:element name="cantidadComision" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor de la comision</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="chequeComision" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor de la comision pagado en cheque
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="codigoAutorizacion" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>codigo de autorizacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="codigoComercio" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Codigo del Comercio (CNB)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="codigoProveedor" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>codigo de autorizacion que envia el proveedor
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cuentaComision" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>cuenta Comision</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="debito" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor a debitar por el servicio
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="debitoComision" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor de la comision pagado con debito a cta
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="detalleCuota" minOccurs="0" type="xs:string"/>
+			<xs:element name="detalleRubro" minOccurs="0" type="xs:string"/>
+			<xs:element name="detallePago" minOccurs="0" type="xs:string"/>
+			<xs:element name="efectivo" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor en efectivo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="efectivoCancelado" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor cancelado en Nota de credito o por pago del
+						servicio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="efectivoCheque" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>efectivoCheque</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="efectivoCobro" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor cancelado en Efecto de Cobro por pago del
+						servicio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="efectivoComision" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor de la comision pagado en efectivo
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="efectivoNotaCredito" type="xs:float" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>efectivoNotaCredito</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="empresa" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>codigo de la empresa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="entidad" minOccurs="0" type="xs:string"/>
+			<xs:element name="fechaContable" type="xs:date" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>fecha efectiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fechaEfectiva" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>fechaEfectiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fechaEmision" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Fecha de emision de la planilla de consumo
+						electrico
+						representado como YYYYMMDD
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fechaSRI" type="xs:date" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>fecha de vencimiento del sri</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="horario" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="identificacion" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identificacion del cliente ced/ruc
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nombre" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>nombre cliente</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="notaCredito" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor de la nota de credito Tributaria
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numeroTarjeta" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="oficinaPago" minOccurs="0" type="xs:string"/>
+			<xs:element name="operacionProceso" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Operacion del proceso (P:PAGO , V:VALIDACION
+						,U:ACTUALIZAR)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="opcion" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>opcion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="papeleta" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Codigo del recaudo (suministro/numero de tarjeta)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tabla" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>opcion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reversoTransaccion" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="secuencialRequerimiento" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>secuencial requerimiento</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="suministro" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="tipoCanal" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tipo de canal( VEN/BKN/SAT)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tipoctaComision" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="tipoMoneda" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>moneda en la que se esta realizando la
+						transaccion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tipoPago" minOccurs="0" type="xs:string"/>
+			<xs:element name="tipoReferencia" minOccurs="0" type="xs:string"/>
+			<xs:element name="dbaBatch" minOccurs="0" type="xs:string"/>
+			<xs:element name="rubroPersona" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>rubro</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="servicioPersona" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>servicio Persona</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tipoOperacion" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>tipo de operacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ubicacion" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>ubicacion de donde se envia la transaccion
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalComision" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>total comision</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valorCheque" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Valor en cheque</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valorComision" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor comision</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valorImpuesto" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor Impuesto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valortasa" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>valor tasa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valorTotalCancelar" type="xs:double" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Valor total a cancelar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cuenta" type="s1:Cuenta" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

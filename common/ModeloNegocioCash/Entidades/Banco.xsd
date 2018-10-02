@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.bolivariano.com/Banco" xmlns:bnc="http://www.bolivariano.com/Banco" xmlns:pais="http://www.bolivariano.com/Pais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="http://www.bolivariano.com/Pais" schemaLocation="Pais.xsd"/>
+
+<xs:simpleType name="TipoBanco">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="SWIFT"/>
+   <xs:enumeration value="ABA"/>   
+   <xs:enumeration value="OTROS"/>   
+  </xs:restriction>
+ </xs:simpleType>
+	<xs:element name="banco" type="bnc:Banco"/>
+	<xs:complexType name="Banco">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="codigo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Codigo del banco</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="nombre" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Nombre del banco</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoBancoCentral" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Codigo del banco en el banco central
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoCodigo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>tipo de codigo internacional del Banco
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoInternacional" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Codigo SWIFT/ABA del banco</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="cuentaBancoCentral" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Cuenta del Banco en el Banco Central
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="direccion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Direccion del banco</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="pais" type="pais:Pais">
+				<xs:annotation>
+					<xs:documentation>pais al que pertenece el banco</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+                        <xs:element maxOccurs="1" minOccurs="0" name="tipoBanco" nillable="false" type="bnc:TipoBanco">
+                            <xs:annotation>
+					<xs:documentation>representa el tipo de banco</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

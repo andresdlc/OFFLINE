@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.bolivariano.com/Persona" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.bolivariano.com/Persona">
+	<annotation>
+		<documentation>Persona</documentation>
+	</annotation>
+	<complexType name="Persona">
+		<sequence>
+			<element maxOccurs="1" minOccurs="0" name="primerNombre" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="segundoNombre" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="primerApellido" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="segundoApellido" type="string"/>	
+			<element maxOccurs="1" minOccurs="0" name="apellidoCasado" type="string"/>			
+            <element maxOccurs="1" minOccurs="0" name="nombreCompleto" type="string"/>
+			<!--<element name="cedula" type="string" minOccurs="1" maxOccurs="1" ></element>-->
+			<!--<element name="correo" type="string" minOccurs="1" maxOccurs="1" ></element>-->
+			<element maxOccurs="1" minOccurs="0" name="sexo" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="estadoCivil" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="nacionalidad" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="instruccion" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="profesion" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="fechaNacimiento" type="date"/>
+		</sequence>
+	</complexType>
+	
+	</schema>

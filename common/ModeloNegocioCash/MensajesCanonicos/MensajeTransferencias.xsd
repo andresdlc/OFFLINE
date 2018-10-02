@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.bolivariano.com/CashManagement/MensajeTransferencias" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://www.bolivariano.com/Transferencia" xmlns:Q2="http://www.bolivariano.com/Producto" xmlns:Q3="http://www.bolivariano.com/Paginacion" xmlns:Q4="http://www.bolivariano.com/Cuenta" xmlns:Q5="http://www.bolivariano.com/MensajeBolivariano" xmlns:Q6="http://www.bolivariano.com/Banco" xmlns:cln="http://www.bolivariano.com/Cliente" xmlns:rest="http://www.bolivariano.com/Restricciones" xmlns:tns="http://www.bolivariano.com/CashManagement/MensajeTransferencias">
+
+	<import namespace="http://www.bolivariano.com/MensajeBolivariano" schemaLocation="../Entidades/MensajeBolivariano.xsd"/>
+	<import namespace="http://www.bolivariano.com/Banco" schemaLocation="../Entidades/Banco.xsd"/>
+	<import namespace="http://www.bolivariano.com/Cuenta" schemaLocation="../Entidades/Cuenta.xsd"/>
+	<import namespace="http://www.bolivariano.com/Paginacion" schemaLocation="../Entidades/Paginacion.xsd"/>
+	<import namespace="http://www.bolivariano.com/Producto" schemaLocation="../Entidades/Producto.xsd"/>
+	<import namespace="http://www.bolivariano.com/Transferencia" schemaLocation="../Entidades/Transferencia.xsd"/>
+	<import namespace="http://www.bolivariano.com/Cliente" schemaLocation="../Entidades/Cliente.xsd"/>
+	<import namespace="http://www.bolivariano.com/Restricciones" schemaLocation="../Entidades/Restricciones.xsd"/>
+	<element name="mensajeEntradaObtenerComprobanteSwift" type="Q1:Transferencia"/>
+	<element name="mensajeSalidaObtenerComprobanteSwift" type="tns:Transferencias"/>
+
+	<element name="mensajeEntradaObtenerCotizacionMoneda" type="tns:MensajeEntradaObtenerCotizacionMoneda"/>
+	<element name="mensajeSalidaObtenerCotizacionMoneda" type="tns:MensajeSalidaObtenerCotizacionMoneda"/>
+
+	<element name="mensajeEntradaValidarProductoOtrosBancos" type="tns:MensajeEntradaValidarProductoOtrosBancos"/>
+	<element name="mensajeSalidaValidarProductoOtrosBancos" type="tns:MensajeSalidaValidarProductoOtrosBancos"/>
+
+	<element name="mensajeEntradaEjecutarTransferencia" type="tns:MensajeEntradaEjecutarTransferencia"/>
+	<element name="mensajeSalidaEjecutarTransferencia" type="tns:MensajeSalidaEjecutarTransferencia"/>
+
+	<element name="mensajeEntradaObtenerBancosPagoDirecto" type="tns:MensajeEntradaObtenerBancosPagoDirecto"/>
+	<element name="mensajeSalidaObtenerBancosPagoDirecto" type="tns:MensajeSalidaObtenerBancosPagoDirecto"/>
+
+	<element name="obtenerBancosPagoDirectoFault" type="tns:TransferenciaFault"/>
+
+	<element name="mensajeEntradaTransferirSPI" type="tns:MensajeEntradaTransferirSPI"/>
+	<element name="mensajeSalidaTransferirSPI" type="tns:MensajeSalidaTransferirSPI"/>
+
+	<element name="mensajeEntradaObtenerTransaccionesSwift">
+		<complexType>
+			<sequence>
+				<element name="identificadorCuenta" type="Q4:IdentificadorCuenta"/>
+				<element name="cuentaBeneficiario" type="string"/>
+				<element name="fechaInicial" type="dateTime"/>
+				<element name="fechaFinal" type="dateTime"/>
+				<element name="paginacion" type="Q3:Paginacion"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="mensajeSalidaObtenerTransaccionesSwift">
+		<complexType>
+			<complexContent>
+				<extension base="Q5:MensajeSalida">
+					<sequence>
+						<element maxOccurs="unbounded" minOccurs="0" name="transferenciasSwift" type="tns:TransferenciasSwift"/>
+						<element minOccurs="0" name="paginacion" type="Q3:RespuestaPaginacion"/>
+					</sequence>
+				</extension>
+
+			</complexContent>
+		</complexType>
+	</element>
+
+	<complexType name="TransferenciasSwift">
+		<sequence>
+			<element minOccurs="0" name="codigoSwift" type="string"/>
+			<element minOccurs="0" name="mti" type="string">
+				<annotation>
+					<documentation>Message Type Indicator (MTI)</documentation>
+				</annotation>
+			</element>
+			<element minOccurs="0" name="institucionBeneficiaria" type="string"/>
+			<element minOccurs="0" name="fechaPago" type="string"/>
+			<element minOccurs="0" name="monto" type="string"/>
+			<element minOccurs="0" name="canal" type="string"/>
+			<element minOccurs="0" name="estado" type="string"/>
+			<element minOccurs="0" name="beneficiario" type="string"/>
+			<element minOccurs="0" name="transaccion" type="string"/>
+			<element minOccurs="0" name="idUnicoMovimiento" type="string"/>
+		</sequence>
+	</complexType>
+	<complexType name="BancosPagoDirecto">
+		<complexContent>
+			<extension base="Q5:MensajeSalida">
+				<sequence>
+					<element maxOccurs="unbounded" minOccurs="0" name="banco" type="Q6:Banco"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="Transferencias">
+		<complexContent>
+			<extension base="Q1:Transferencia">
+				<sequence>
+					<element minOccurs="0" name="mensaje" type="string"/>
+					<element minOccurs="0" name="error" type="string"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="MensajeEntradaObtenerCotizacionMoneda">
+		<complexContent>
+			<extension base="Q5:MensajeEntrada">
+				<sequence>
+					<element maxOccurs="1" minOccurs="1" name="monedaOrigen" nillable="false" type="int"/>
+					<element maxOccurs="1" minOccurs="1" name="monedaDestino" nillable="false" type="int"/>
+					<element maxOccurs="1" minOccurs="1" name="monedaTransaccion" nillable="false" type="int"/>
+					<element maxOccurs="1" minOccurs="1" name="montoAConvertir" nillable="false" type="double"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="MensajeSalidaObtenerCotizacionMoneda">
+		<complexContent>
+			<extension base="Q5:MensajeSalida">
+				<sequence>
+					<element maxOccurs="1" minOccurs="0" name="tasaConversion" nillable="false" type="double"/>
+					<element maxOccurs="1" minOccurs="0" name="montoOrigen" nillable="false" type="double"/>
+					<element maxOccurs="1" minOccurs="0" name="montoDestino" nillable="false" type="double"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+        <simpleType name="ProductoBeneficiario">
+            <restriction base="string">
+                <enumeration value="AHORROS"/>
+                <enumeration value="CORRIENTES"/>
+                <enumeration value="TARJETAS"/>
+            </restriction>
+        </simpleType>
+
+	<complexType name="MensajeEntradaValidarProductoOtrosBancos">
+		<complexContent>
+			<extension base="Q5:MensajeEntrada">
+				<sequence>
+					<element maxOccurs="1" minOccurs="1" name="productoBeneficiario" nillable="false" type="string"/>
+					<element maxOccurs="1" minOccurs="1" name="tipoProductoBeneficiario" nillable="false" type="tns:ProductoBeneficiario"/>
+					<element maxOccurs="1" minOccurs="1" name="bancoBeneficiario" nillable="false" type="string"/>
+					<element maxOccurs="1" minOccurs="1" name="nombreBeneficiario" nillable="false" type="rest:NonEmptyString"/>
+					<element maxOccurs="1" minOccurs="1" name="beneficiario" nillable="false" type="cln:Identificacion"/>					
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="MensajeSalidaValidarProductoOtrosBancos">
+		<complexContent>
+			<extension base="Q5:MensajeSalida">
+				<sequence>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="MensajeEntradaEjecutarTransferencia">
+		<complexContent>
+			<extension base="Q5:MensajeEntrada">
+				<sequence>
+					<element maxOccurs="1" minOccurs="1" name="cuentaOrigen" nillable="false" type="Q4:IdentificadorCuenta"/>
+					<element maxOccurs="1" minOccurs="1" name="cuentaDestino" nillable="false" type="Q4:IdentificadorCuenta"/>
+					<element maxOccurs="1" minOccurs="1" name="comision" nillable="false" type="double"/>
+					<element maxOccurs="1" minOccurs="1" name="montoOrigen" nillable="false" type="double"/>
+					<element maxOccurs="1" minOccurs="1" name="montoDestino" nillable="false" type="double"/>
+					<element maxOccurs="1" minOccurs="1" name="bancoDestino" nillable="false" type="string"/>
+					<element maxOccurs="1" minOccurs="1" name="identificacionBeneficiario" nillable="false" type="cln:Identificacion"/>
+					<element maxOccurs="1" minOccurs="1" name="nombreBeneficiario" nillable="false" type="string"/>
+					<element maxOccurs="1" minOccurs="1" name="monedaOrigen" nillable="false" type="string"/>
+					<element maxOccurs="1" minOccurs="1" name="monedaDestino" nillable="false" type="string"/>
+					<element maxOccurs="1" minOccurs="1" name="concepto" nillable="false" type="string"/>
+					<element maxOccurs="1" minOccurs="1" name="tipo" nillable="false">
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="PROPIAS"/>
+								<enumeration value="TERCEROS"/>
+								<enumeration value="SPI"/>
+								<enumeration value="PAGO_DIRECTO"/>	
+							</restriction>
+						</simpleType>
+					</element>
+                    <element maxOccurs="1" minOccurs="0" name="uriTransaccion" nillable="false" type="string"/> 
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="MensajeSalidaEjecutarTransferencia">
+		<complexContent>
+			<extension base="Q5:MensajeSalida">
+				<sequence>
+	                <element maxOccurs="1" minOccurs="0" name="valorCotizacion" type="double"/>
+	                <element maxOccurs="1" minOccurs="0" name="montoProcesado" type="double"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- OBTENER BANCOS PAGO DIRECTO -->
+	<complexType name="MensajeEntradaObtenerBancosPagoDirecto">
+		<complexContent>
+			<extension base="Q5:MensajeEntrada">
+				<sequence>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Complex type creado para ajustar la respuesta del catalogo de otros bancos -->
+	<complexType name="BancoPagoDirecto">
+		<sequence>
+			<element maxOccurs="1" minOccurs="1" name="banco" type="Q6:Banco">
+				<annotation>
+					<documentation>banco</documentation>
+				</annotation>
+			</element>
+
+			<element default="CUENTAS" maxOccurs="1" minOccurs="1" name="tipoOperacion" nillable="false">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="CUENTAS"/>
+						<enumeration value="TARJETAS"/>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element maxOccurs="1" minOccurs="0" name="tipotarjeta" type="string">
+				<annotation>
+					<documentation>banco</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MensajeSalidaObtenerBancosPagoDirecto">
+		<complexContent>
+			<extension base="Q5:MensajeSalida">
+				<sequence>
+					<element maxOccurs="unbounded" minOccurs="1" name="BancoPagoDirecto" nillable="false" type="tns:BancoPagoDirecto"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="TransferenciaFault">
+		<sequence>
+			<element name="codigo" type="string"/>
+			<element name="nombre" type="string"/>
+			<element name="descripcion" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="MensajeEntradaTransferirSPI">
+		<complexContent>
+			<extension base="Q5:MensajeEntrada">
+				<sequence>
+					<element maxOccurs="1" minOccurs="1" name="tipo" nillable="false">
+						<annotation>
+							<documentation>Tipo de transferencia a realizar a otros bancos (a
+								cuentas o a tarjetas de credito)</documentation>
+						</annotation>
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="CUENTAS"/>
+								<enumeration value="TARJETAS"/>
+							</restriction>
+						</simpleType>
+					</element>
+					<element maxOccurs="1" minOccurs="1" name="ordenante" nillable="false">
+						<annotation>
+							<documentation>Datos del ordenante origen (dentro del banco)
+							</documentation>
+						</annotation>
+						<complexType>
+							<sequence>
+								<element maxOccurs="1" minOccurs="1" name="identificacion" nillable="false" type="cln:Identificacion"/>
+								<element maxOccurs="1" minOccurs="1" name="cuenta" nillable="false" type="Q4:IdentificadorCuenta"/>
+							</sequence>
+						</complexType>
+					</element>
+					<element maxOccurs="1" minOccurs="1" name="beneficiario" nillable="false">
+						<annotation>
+							<documentation>Datos del beneficiario destino (en otro banco)
+							</documentation>
+						</annotation>
+						<complexType>
+							<sequence>
+								<element maxOccurs="1" minOccurs="1" name="identificacion" nillable="false" type="cln:Identificacion"/>
+								<element maxOccurs="1" minOccurs="0" name="cuenta" type="Q4:IdentificadorCuenta">
+									<annotation>
+										<documentation>En caso de realizarse una transferencia a
+											cuentas, debe enviarse este campo y omitirse el campo
+											tarjetaCredito</documentation>
+									</annotation>
+								</element>
+								<element maxOccurs="1" minOccurs="0" name="tarjetaCredito" type="string">
+									<annotation>
+										<documentation>En caso de realizarse una transferencia a
+											tarjetas, debe enviarse este campo y omitirse el campo cuenta
+										</documentation>
+									</annotation>
+								</element>
+								<element maxOccurs="1" minOccurs="1" name="nombres" type="string">
+									<annotation>
+										<documentation>Nombres del beneficiario
+										</documentation>
+									</annotation>
+								</element>
+								<element maxOccurs="1" minOccurs="1" name="banco" type="string">
+									<annotation>
+										<documentation>Codigo de la cuenta del banco destino en el BCE
+										</documentation>
+									</annotation>
+								</element>
+								<element maxOccurs="1" minOccurs="0" name="tipoTarjeta" type="string">
+									<annotation>
+										<documentation>Tipo de tarjeta (en caso de pago de tarjetas) VSA037, ETC</documentation>
+									</annotation>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element default="USD" maxOccurs="1" minOccurs="1" name="moneda" type="string">
+						<annotation>
+							<documentation>Moneda de la transaccion, por defecto Dolar
+							</documentation>
+						</annotation>
+					</element>
+					<element maxOccurs="1" minOccurs="1" name="valor" nillable="false" type="double">
+						<annotation>
+							<documentation>Valor de la transferencia (sin el costo)
+							</documentation>
+						</annotation>
+					</element>
+					<element maxOccurs="1" minOccurs="1" name="comision" nillable="false" type="double">
+						<annotation>
+							<documentation>Costo de la transaccion a ser cobrado al ordenante
+							</documentation>
+						</annotation>
+					</element>
+					<element maxOccurs="1" minOccurs="1" name="observaciones" nillable="false" type="string">
+						<annotation>
+							<documentation>Observaciones de la transferencia</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="MensajeSalidaTransferirSPI">
+		<complexContent>
+			<extension base="Q5:MensajeSalida">
+				<sequence>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

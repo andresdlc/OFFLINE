@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.bolivariano.com/WSFrameWork/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.bolivariano.com/WSFrameWork/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.bolivariano.com/WSFrameWork/">
+      <s:element name="LoginAplicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdAplicacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UsrApl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginAplicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginAplicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistraUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistraUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistraUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificaUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificaUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerificaUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPermisoUserTransOpcion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPermisoUserTransOpcionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsPermisoUserTransOpcionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EjecutaTransacciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XmlSeccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XmlEntrada" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EjecutaTransaccionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EjecutaTransaccionesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EjecutaTransaccion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XmlSeccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XmlEntrada" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EjecutaTransaccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EjecutaTransaccionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EjecutaTransaccionDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XmlSeccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XmlEntrada" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EjecutaTransaccionDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EjecutaTransaccionDSResult">
+              <s:complexType>
+                <s:sequence>                
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsParamAplicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsParamAplicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsParamAplicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPermisoAplTransOpcion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPermisoAplTransOpcionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsPermisoAplTransOpcionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsSemillaPart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsSemillaPartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsSemillaPartResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecCmdUnix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlSession" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecCmdUnixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecCmdUnixResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecCmdWindows">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlSession" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecCmdWindowsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecCmdWindowsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveEsp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveEspResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaLLaveEspResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveEspFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveEspFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaLLaveEspFileResult">
+              <s:complexType>
+                <s:sequence>                
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveEspFileRS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveEspFileRSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaLLaveEspFileRSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveKEY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLLaveKEYResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaLLaveKEYResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsLLavesServicio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PI_xmlParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsLLavesServicioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsLLavesServicioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginAplicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginAplicacion" />
+  </wsdl:message>
+  <wsdl:message name="LoginAplicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginAplicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistraUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistraUser" />
+  </wsdl:message>
+  <wsdl:message name="RegistraUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistraUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerificaUserSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificaUser" />
+  </wsdl:message>
+  <wsdl:message name="VerificaUserSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificaUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsPermisoUserTransOpcionSoapIn">
+    <wsdl:part name="parameters" element="tns:IsPermisoUserTransOpcion" />
+  </wsdl:message>
+  <wsdl:message name="IsPermisoUserTransOpcionSoapOut">
+    <wsdl:part name="parameters" element="tns:IsPermisoUserTransOpcionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EjecutaTransaccionesSoapIn">
+    <wsdl:part name="parameters" element="tns:EjecutaTransacciones" />
+  </wsdl:message>
+  <wsdl:message name="EjecutaTransaccionesSoapOut">
+    <wsdl:part name="parameters" element="tns:EjecutaTransaccionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="EjecutaTransaccionSoapIn">
+    <wsdl:part name="parameters" element="tns:EjecutaTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="EjecutaTransaccionSoapOut">
+    <wsdl:part name="parameters" element="tns:EjecutaTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EjecutaTransaccionDSSoapIn">
+    <wsdl:part name="parameters" element="tns:EjecutaTransaccionDS" />
+  </wsdl:message>
+  <wsdl:message name="EjecutaTransaccionDSSoapOut">
+    <wsdl:part name="parameters" element="tns:EjecutaTransaccionDSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsParamAplicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsParamAplicacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsParamAplicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsParamAplicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsPermisoAplTransOpcionSoapIn">
+    <wsdl:part name="parameters" element="tns:IsPermisoAplTransOpcion" />
+  </wsdl:message>
+  <wsdl:message name="IsPermisoAplTransOpcionSoapOut">
+    <wsdl:part name="parameters" element="tns:IsPermisoAplTransOpcionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsSemillaPartSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsSemillaPart" />
+  </wsdl:message>
+  <wsdl:message name="ConsSemillaPartSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsSemillaPartResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecCmdUnixSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecCmdUnix" />
+  </wsdl:message>
+  <wsdl:message name="ExecCmdUnixSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecCmdUnixResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecCmdWindowsSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecCmdWindows" />
+  </wsdl:message>
+  <wsdl:message name="ExecCmdWindowsSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecCmdWindowsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveEspSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveEsp" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveEspSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveEspResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveEspFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveEspFile" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveEspFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveEspFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveEspFileRSSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveEspFileRS" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveEspFileRSSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveEspFileRSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveKEYSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveKEY" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaLLaveKEYSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaLLaveKEYResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsLLavesServicioSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsLLavesServicio" />
+  </wsdl:message>
+  <wsdl:message name="ConsLLavesServicioSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsLLavesServicioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioSeguridadSCLSoap">
+    <wsdl:operation name="LoginAplicacion">
+      <wsdl:input message="tns:LoginAplicacionSoapIn" />
+      <wsdl:output message="tns:LoginAplicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraUser">
+      <wsdl:input message="tns:RegistraUserSoapIn" />
+      <wsdl:output message="tns:RegistraUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificaUser">
+      <wsdl:input message="tns:VerificaUserSoapIn" />
+      <wsdl:output message="tns:VerificaUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPermisoUserTransOpcion">
+      <wsdl:input message="tns:IsPermisoUserTransOpcionSoapIn" />
+      <wsdl:output message="tns:IsPermisoUserTransOpcionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransacciones">
+      <wsdl:input message="tns:EjecutaTransaccionesSoapIn" />
+      <wsdl:output message="tns:EjecutaTransaccionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransaccion">
+      <wsdl:input message="tns:EjecutaTransaccionSoapIn" />
+      <wsdl:output message="tns:EjecutaTransaccionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransaccionDS">
+      <wsdl:input message="tns:EjecutaTransaccionDSSoapIn" />
+      <wsdl:output message="tns:EjecutaTransaccionDSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsParamAplicacion">
+      <wsdl:input message="tns:ConsParamAplicacionSoapIn" />
+      <wsdl:output message="tns:ConsParamAplicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPermisoAplTransOpcion">
+      <wsdl:input message="tns:IsPermisoAplTransOpcionSoapIn" />
+      <wsdl:output message="tns:IsPermisoAplTransOpcionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsSemillaPart">
+      <wsdl:input message="tns:ConsSemillaPartSoapIn" />
+      <wsdl:output message="tns:ConsSemillaPartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecCmdUnix">
+      <wsdl:input message="tns:ExecCmdUnixSoapIn" />
+      <wsdl:output message="tns:ExecCmdUnixSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecCmdWindows">
+      <wsdl:input message="tns:ExecCmdWindowsSoapIn" />
+      <wsdl:output message="tns:ExecCmdWindowsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEsp">
+      <wsdl:input message="tns:ConsultaLLaveEspSoapIn" />
+      <wsdl:output message="tns:ConsultaLLaveEspSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEspFile">
+      <wsdl:input message="tns:ConsultaLLaveEspFileSoapIn" />
+      <wsdl:output message="tns:ConsultaLLaveEspFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEspFileRS">
+      <wsdl:input message="tns:ConsultaLLaveEspFileRSSoapIn" />
+      <wsdl:output message="tns:ConsultaLLaveEspFileRSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveKEY">
+      <wsdl:input message="tns:ConsultaLLaveKEYSoapIn" />
+      <wsdl:output message="tns:ConsultaLLaveKEYSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsLLavesServicio">
+      <wsdl:input message="tns:ConsLLavesServicioSoapIn" />
+      <wsdl:output message="tns:ConsLLavesServicioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioSeguridadSCLSoap" type="tns:ServicioSeguridadSCLSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoginAplicacion">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/LoginAplicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraUser">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/RegistraUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificaUser">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/VerificaUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPermisoUserTransOpcion">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/IsPermisoUserTransOpcion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransacciones">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/EjecutaTransacciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransaccion">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/EjecutaTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransaccionDS">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/EjecutaTransaccionDS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsParamAplicacion">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsParamAplicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPermisoAplTransOpcion">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/IsPermisoAplTransOpcion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsSemillaPart">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsSemillaPart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecCmdUnix">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ExecCmdUnix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecCmdWindows">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ExecCmdWindows" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEsp">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveEsp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEspFile">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveEspFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEspFileRS">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveEspFileRS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveKEY">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveKEY" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsLLavesServicio">
+      <soap:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsLLavesServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioSeguridadSCLSoap12" type="tns:ServicioSeguridadSCLSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoginAplicacion">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/LoginAplicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraUser">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/RegistraUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificaUser">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/VerificaUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPermisoUserTransOpcion">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/IsPermisoUserTransOpcion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransacciones">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/EjecutaTransacciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransaccion">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/EjecutaTransaccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EjecutaTransaccionDS">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/EjecutaTransaccionDS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsParamAplicacion">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsParamAplicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPermisoAplTransOpcion">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/IsPermisoAplTransOpcion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsSemillaPart">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsSemillaPart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecCmdUnix">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ExecCmdUnix" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecCmdWindows">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ExecCmdWindows" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEsp">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveEsp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEspFile">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveEspFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveEspFileRS">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveEspFileRS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLLaveKEY">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsultaLLaveKEY" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsLLavesServicio">
+      <soap12:operation soapAction="http://www.bolivariano.com/WSFrameWork/ConsLLavesServicio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioSeguridadSCL">
+    <wsdl:port name="ServicioSeguridadSCLSoap" binding="tns:ServicioSeguridadSCLSoap">
+      <soap:address location="https://FRAMEWORKDES.bbframework.com/WSFrameWork/ServicioSeguridadSCL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioSeguridadSCLSoap12" binding="tns:ServicioSeguridadSCLSoap12">
+      <soap12:address location="https://FRAMEWORKDES.bbframework.com/WSFrameWork/ServicioSeguridadSCL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.bolivariano.com/CashManagement/MensajesRecaudacionLuz" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mbl="http://www.bolivariano.com/MensajeBolivariano" xmlns:tns="http://www.bolivariano.com/CashManagement/MensajesRecaudacionLuz" xmlns:res="http://www.bolivariano.com/Restricciones" xmlns:cue="http://www.bolivariano.com/Cuenta" xmlns:ee="http://www.bolivariano.com/EE">
+    <xs:import schemaLocation="../Entidades/MensajeBolivariano.xsd" namespace="http://www.bolivariano.com/MensajeBolivariano"/>
+    <xs:import schemaLocation="../Entidades/Restricciones.xsd" namespace="http://www.bolivariano.com/Restricciones"/>
+    <xs:import schemaLocation="../Entidades/EE.xsd" namespace="http://www.bolivariano.com/EE"/>
+    <xs:import schemaLocation="../Entidades/Cuenta.xsd" namespace="http://www.bolivariano.com/Cuenta"/>
+
+    <xs:element name="MensajeEntradaObtenerSaldoPendiente" type="tns:MensajeEntradaObtenerSaldoPendiente"/>
+    <xs:element name="MensajeSalidaObtenerSaldoPendiente" type="tns:MensajeSalidaObtenerSaldoPendiente"/>
+    <xs:element name="MensajeEntradaPagar" type="tns:MensajeEntradaPagar"/>
+    <xs:element name="MensajeSalidaPagar" type="tns:MensajeSalidaPagar"/>
+    <xs:element name="RecaudacionLuzFault" type="tns:RecaudacionLuzFault"/>
+    <xs:simpleType name="EmpresasLuz">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EEQ"/>
+            <xs:enumeration value="CNEL_GLR"/>
+            <!--    CNEL GUAYAS LOS RIOS    -->
+            <xs:enumeration value="CNEL_GYE"/>
+            <!--    CNEL GUAYAQUIL  -->
+            <xs:enumeration value="CNEL_ESM"/>
+            <!--    CNEL ESMERALDAS -->
+            <xs:enumeration value="CNEL_MLG"/>
+            <!--    CNEL MILAGRO    -->
+            <xs:enumeration value="CNEL_BOL"/>
+            <!--    CNEL BOLIVAR    -->
+            <xs:enumeration value="CNEL_STD"/>
+            <!--    CNEL SANTO DOMINGO  -->
+            <xs:enumeration value="CNEL_ELR"/>
+            <!--    CNEL EL ORO    -->
+            <xs:enumeration value="CNEL_MAN"/>
+            <!--    CNEL MANABI -->
+            <xs:enumeration value="CNEL_SUC"/>
+            <!--    CNEL SUCUMBIOS  -->
+            <xs:enumeration value="CNEL_STE"/>
+            <!--    CNEL SANTA ELENA    -->
+			
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="MensajeEntradaObtenerSaldoPendiente">
+        <xs:complexContent>
+            <xs:extension base="mbl:MensajeEntrada">
+                <xs:sequence>
+                    <xs:element name="empresa" minOccurs="1" maxOccurs="1" type="tns:EmpresasLuz" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>Abreviado de la empresa de luz</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="codigoEmpresa" minOccurs="1" maxOccurs="1" type="res:NumeroPositivo" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>codigo de la empresa</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="suministro" minOccurs="1" maxOccurs="1" type="xs:string" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>Codigo de suministro del medidor a
+                                              consultar</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="terminalEmpresa" minOccurs="0" maxOccurs="1" type="xs:string" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>codigo de terminal registrado en
+                                              la empresa de luz</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="moneda" minOccurs="1" maxOccurs="1" type="res:CodigoMoneda" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>Nemonico de la moneda</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+					<xs:element name="canalCobranza" minOccurs="0" maxOccurs="1" type="xs:string" nillable="true">
+                        <xs:annotation>
+                            <xs:documentation>canal de cobranza de CNEL</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="MensajeSalidaObtenerSaldoPendiente">
+        <xs:complexContent>
+            <xs:extension base="mbl:MensajeSalida">
+                <xs:sequence>
+                    <xs:element name="electrica" minOccurs="0" maxOccurs="1" type="ee:EE" nillable="false"/>                    
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="MensajeEntradaPagar">
+        <xs:complexContent>
+            <xs:extension base="mbl:MensajeEntrada">
+                <xs:sequence>
+                    <xs:element name="empresa" minOccurs="1" maxOccurs="1" type="tns:EmpresasLuz" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>Abreviado de la empresa de luz</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+					<xs:element name="codigoEmpresa" minOccurs="1" maxOccurs="1" type="res:NumeroPositivo" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>Abreviado de la empresa de luz</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+					<xs:element name="moneda" minOccurs="1" maxOccurs="1" type="res:CodigoMoneda" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>Nemonico de la moneda</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="electrica" minOccurs="1" maxOccurs="1" type="ee:EE" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>codigo de la empresa</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>                                                            
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="MensajeSalidaPagar">
+        <xs:complexContent>
+            <xs:extension base="mbl:MensajeSalida">                
+                <xs:sequence>
+				<xs:element name="electrica" minOccurs="0" maxOccurs="1" type="ee:EE" nillable="false"/>
+                                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- FAULT -->
+    <xs:complexType name="RecaudacionLuzFault">
+        <xs:sequence>
+            <xs:element name="codigo" type="xs:string"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="descripcion" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.bolivariano.com/Pais" xmlns:pais="http://www.bolivariano.com/Pais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="pais" type="pais:Pais"/>
+  
+  <xs:complexType name="Estado">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="codigo" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Codigo del estado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element default="" maxOccurs="1" minOccurs="0" name="nombre" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Nombre del estado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element default="" maxOccurs="1" minOccurs="0" name="nemonico" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Nemonico del estado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Pais">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="codigo" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Codigo del pais</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="nombre" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Nombre del pais</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="nemonico" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Nemonico del pais</xs:documentation>
+        </xs:annotation>
+      </xs:element>      
+      <xs:element maxOccurs="1" minOccurs="0" name="estados" nillable="false">
+        <xs:annotation>
+          <xs:documentation>Listado de estados</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="estado" nillable="false" type="pais:Estado"/>
+            </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions name="Transferencias" targetNamespace="http://www.bolivariano.com/ws/Transferencias/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.bolivariano.com/CashManagement/MensajeTransferencias" xmlns:WL5G3N2="http://www.bolivariano.com/ws/Transferencias/" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.bolivariano.com/ws/Transferencias/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.bolivariano.com/CashManagement/MensajeTransferencias">
+      <xsd:import namespace="http://www.bolivariano.com/CashManagement/MensajeTransferencias" schemaLocation="MensajesCanonicos/MensajeTransferencias.xsd"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="obtenerComprobanteSwiftRequest">
+    <WL5G3N0:part element="WL5G3N1:mensajeEntradaObtenerComprobanteSwift" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerComprobanteSwiftResponse">
+    <WL5G3N0:part element="WL5G3N1:mensajeSalidaObtenerComprobanteSwift" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerTransaccionesSwiftRequest">
+    <WL5G3N0:part element="WL5G3N1:mensajeEntradaObtenerTransaccionesSwift" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerTransaccionesSwiftResponse">
+    <WL5G3N0:part element="WL5G3N1:mensajeSalidaObtenerTransaccionesSwift" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="mensajeEntradaObtenerBancosPagoDirecto">
+    <WL5G3N0:part element="WL5G3N1:mensajeEntradaObtenerBancosPagoDirecto" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="mensajeSalidaObtenerBancosPagoDirecto">
+    <WL5G3N0:part element="WL5G3N1:mensajeSalidaObtenerBancosPagoDirecto" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="mensajeEntradaValidarProductoOtrosBancos">
+    <WL5G3N0:part element="WL5G3N1:mensajeEntradaValidarProductoOtrosBancos" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="mensajeSalidaValidarProductoOtrosBancos">
+    <WL5G3N0:part element="WL5G3N1:mensajeSalidaValidarProductoOtrosBancos" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ejecutarTransferenciaRequest">
+    <WL5G3N0:part element="WL5G3N1:mensajeEntradaEjecutarTransferencia" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ejecutarTransferenciaResponse">
+    <WL5G3N0:part element="WL5G3N1:mensajeSalidaEjecutarTransferencia" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="Transferencias">
+    <WL5G3N0:operation name="obtenerComprobanteSwift">
+      <WL5G3N0:input message="WL5G3N2:obtenerComprobanteSwiftRequest"/>
+      <WL5G3N0:output message="WL5G3N2:obtenerComprobanteSwiftResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerTransaccionesSwift">
+      <WL5G3N0:input message="WL5G3N2:obtenerTransaccionesSwiftRequest"/>
+      <WL5G3N0:output message="WL5G3N2:obtenerTransaccionesSwiftResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerBancosPagoDirecto">
+      <WL5G3N0:input message="WL5G3N2:mensajeEntradaObtenerBancosPagoDirecto"/>
+      <WL5G3N0:output message="WL5G3N2:mensajeSalidaObtenerBancosPagoDirecto"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="validarProductoOtrosBancos">
+      <WL5G3N0:input message="WL5G3N2:mensajeEntradaValidarProductoOtrosBancos"/>
+      <WL5G3N0:output message="WL5G3N2:mensajeSalidaValidarProductoOtrosBancos"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ejecutarTransferencia">
+      <WL5G3N0:input message="WL5G3N2:ejecutarTransferenciaRequest"/>
+      <WL5G3N0:output message="WL5G3N2:ejecutarTransferenciaResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="TransferenciasBindingSOAP11" type="WL5G3N2:Transferencias">
+    <WL5G3N3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="obtenerComprobanteSwift">
+      <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/obtenerComprobanteSwift"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerTransaccionesSwift">
+      <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/obtenerTransaccionesSwift"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerBancosPagoDirecto">
+      <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/obtenerBancosPagoDirecto"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="validarProductoOtrosBancos">
+      <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/validarProductoOtrosBancos"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ejecutarTransferencia">
+      <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/ejecutarTransferencia"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="TransferenciasBindingSOAP11QSService">
+    <WL5G3N0:port binding="WL5G3N2:TransferenciasBindingSOAP11" name="TransferenciasBindingSOAP11QSPort">
+      <WL5G3N3:address location="http://esbsswsd1.bolivariano.fin.ec:8011/Transferencia/proxy/TransferenciasSinSeg"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

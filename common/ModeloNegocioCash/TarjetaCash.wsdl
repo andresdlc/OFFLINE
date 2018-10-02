@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N2:definitions name="TarjetaCash" targetNamespace="http://www.bolivariano.com/CashManagement/ws/TarjetaCash" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N4="http://www.bolivariano.com/CashManagement/ws/TarjetaCash" xmlns:WL5G3N3="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:WL5G3N1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <WL5G3N0:Policy WL5G3N1:Id="TarjetaCashSOAP11BindingQSPort_Fault_Policy"/>
+    <WL5G3N0:Policy WL5G3N1:Id="TarjetaCashSOAP11BindingQSPort_Input_Policy">
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <sp:Body/>
+            <sp:Header Namespace="http://www.w3.org/2005/08/addressing"/>
+            <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+            <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0"/>
+            <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd"/>
+            <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd"/>
+            <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd"/>
+            <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <sp:Body/>
+            <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0"/>
+        </sp:EncryptedParts>
+    </WL5G3N0:Policy>
+    <WL5G3N0:Policy WL5G3N1:Id="wss11_username_token_with_message_protection_service_policy">
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+                <sp:ProtectionToken>
+                    <wsp:Policy>
+                        <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                            <wsp:Policy>
+                                <sp:RequireThumbprintReference/>
+                                <sp:WssX509V3Token11/>
+                            </wsp:Policy>
+                        </sp:X509Token>
+                    </wsp:Policy>
+                </sp:ProtectionToken>
+                <sp:AlgorithmSuite>
+                    <wsp:Policy>
+                        <sp:Basic128/>
+                    </wsp:Policy>
+                </sp:AlgorithmSuite>
+                <sp:Layout>
+                    <wsp:Policy>
+                        <sp:Lax/>
+                    </wsp:Policy>
+                </sp:Layout>
+                <sp:IncludeTimestamp/>
+                <sp:OnlySignEntireHeadersAndBody/>
+            </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+                <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                    <wsp:Policy>
+                        <sp:WssUsernameToken10/>
+                    </wsp:Policy>
+                </sp:UsernameToken>
+            </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+                <sp:RequireSignatureConfirmation/>
+                <sp:MustSupportRefEncryptedKey/>
+            </wsp:Policy>
+        </sp:Wss11>
+    </WL5G3N0:Policy>
+    <WL5G3N0:Policy WL5G3N1:Id="TarjetaCashSOAP11BindingQSPort_Output_Policy">
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <sp:Body/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+            <sp:Body/>
+        </sp:EncryptedParts>
+    </WL5G3N0:Policy>
+    <WL5G3N2:types>
+        <xsd:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash" xmlns:WL5G3N2="http://www.bolivariano.com/CashManagement/ws/TarjetaCash" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.bolivariano.com/CashManagement/ws/TarjetaCash" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash">
+            <xsd:import namespace="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash" schemaLocation="MensajesCanonicos/MensajesTarjetaCash.xsd"/>
+        </xsd:schema>
+    </WL5G3N2:types>
+    <WL5G3N2:message name="pagarTarjetaRequest">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeEntradaPagarTarjetaCredito"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="pagarTarjetaResponse">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeSalidaPagarTarjetaCredito"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="deshabilitarUsoInternacionalRequest">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeEntradaDeshabilitarUsoInternacional"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="deshabilitarUsoInternacionalResponse">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeSalidaDeshabilitarUsoInternacional"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="habilitarUsoInternacionalRequest">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeEntradaHabilitarUsoInternacional"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="habilitarUsoInternacionalResponse">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeSalidaHabilitarUsoInternacional"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="bloquearTarjetaRequest">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeEntradaBloquearTarjeta"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="bloquearTarjetaResponse">
+        <WL5G3N2:part name="part" element="WL5G3N3:MensajeSalidaBloquearTarjeta"/>
+    </WL5G3N2:message>
+    <WL5G3N2:portType name="TarjetaCashPortType">
+        <WL5G3N2:operation name="pagarTarjetaCredito">
+            <WL5G3N2:documentation>este metodo permite realizar el pago de tarjetas de credito propias, terceros, y otros bancos, este metodo solo recibe pagos con debito a cuentas</WL5G3N2:documentation>
+            <WL5G3N2:input message="WL5G3N4:pagarTarjetaRequest"/>
+            <WL5G3N2:output message="WL5G3N4:pagarTarjetaResponse"/>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="deshabilitarUsoInternacional">
+            <WL5G3N2:input message="WL5G3N4:deshabilitarUsoInternacionalRequest"/>
+            <WL5G3N2:output message="WL5G3N4:deshabilitarUsoInternacionalResponse"/>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="habilitarUsoInternacional">
+            <WL5G3N2:input message="WL5G3N4:habilitarUsoInternacionalRequest"/>
+            <WL5G3N2:output message="WL5G3N4:habilitarUsoInternacionalResponse"/>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="bloquearTarjeta">
+            <WL5G3N2:input message="WL5G3N4:bloquearTarjetaRequest"/>
+            <WL5G3N2:output message="WL5G3N4:bloquearTarjetaResponse"/>
+        </WL5G3N2:operation>
+    </WL5G3N2:portType>
+    <WL5G3N2:binding name="TarjetaCashSOAP11Binding" type="WL5G3N4:TarjetaCashPortType">
+        <WL5G3N0:Policy>
+            <WL5G3N0:PolicyReference URI="#wss11_username_token_with_message_protection_service_policy"/>
+        </WL5G3N0:Policy>
+        <WL5G3N5:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <WL5G3N2:operation name="pagarTarjetaCredito">
+            <WL5G3N5:operation style="document" soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/pagar"/>
+            <WL5G3N2:input>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Input_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Output_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="deshabilitarUsoInternacional">
+            <WL5G3N5:operation style="document" soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/deshabilitarUsoInternacional"/>
+            <WL5G3N2:input>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Input_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Output_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="habilitarUsoInternacional">
+            <WL5G3N5:operation style="document" soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/habilitarUsoInternacional"/>
+            <WL5G3N2:input>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Input_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Output_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="bloquearTarjeta">
+            <WL5G3N5:operation style="document" soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/bloquearTarjeta"/>
+            <WL5G3N2:input>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Input_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N0:Policy>
+                    <WL5G3N0:PolicyReference URI="#TarjetaCashSOAP11BindingQSPort_Output_Policy"/>
+                </WL5G3N0:Policy>
+                <WL5G3N5:body use="literal" parts="part"/>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+    </WL5G3N2:binding>
+    <WL5G3N2:service name="TarjetaCashSOAP11BindingQSService">
+        <WL5G3N2:port name="TarjetaCashSOAP11BindingQSPort" binding="WL5G3N4:TarjetaCashSOAP11Binding">
+            <WL5G3N5:address location="https://soavides.bolivariano.fin.ec:5554/TarjetaCash/proxy/TarjetaCash"/>
+            <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+                <wsa:Address>http://esbsswsd1.bolivariano.fin.ec:8011/TarjetaCash/proxy/TarjetaCash</wsa:Address>
+                <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+                    <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                        <dsig:X509Data>
+                            <dsig:X509Certificate>MIIDkzCCAnugAwIBAgIEKAbonTANBgkqhkiG9w0BAQUFADB6MQswCQYDVQQGEwJFQzEPMA0GA1UECBMGR3VheWFzMRIwEAYDVQQHEwlHdWF5YXF1aWwxGjAYBgNVBAoTEUJhbmNvIEJvbGl2YXJpYW5vMRYwFAYDVQQLEw1TZWd1cmlkYWQgV2ViMRIwEAYDVQQDEwllc2Jzc3dzZDEwHhcNMTQxMjA5MTkzMjM5WhcNMjQxMjA2MTkzMjM5WjB6MQswCQYDVQQGEwJFQzEPMA0GA1UECBMGR3VheWFzMRIwEAYDVQQHEwlHdWF5YXF1aWwxGjAYBgNVBAoTEUJhbmNvIEJvbGl2YXJpYW5vMRYwFAYDVQQLEw1TZWd1cmlkYWQgV2ViMRIwEAYDVQQDEwllc2Jzc3dzZDEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUb0e5DLiTxSaTz5lEGkX/7W+Nw8Jie953TJPKLb+tdV655/KkRKvSxXglPrnGQMRvQvY0JZ7T4pqw97mFWmW5TKiRwTxDisDV8X/64vDgO6ENkpoCJ6zeJX9EmQKKFTAvNeGWpTCgKh+sq53csxQJKuMDtTtFo5xs3mv7pDkP4Bcomg6y0hlfQcHgYEjK3MPVFotWfxNiahDi7wOeXLUPtDVL/pnjEHRHYCG0F8xt7vhbGQq0sTpmDBrs/0zw7z4zr6M6p60p4UvkNeh/nPl86cHbTy/qTdgBzb2aMWxckGKnK6CB5joEsVDagxj5f+ELzyjz0j0fE4xIrQ9weNSLAgMBAAGjITAfMB0GA1UdDgQWBBQA2icSqdoFhC7vbyKtbw2dk966gTANBgkqhkiG9w0BAQUFAAOCAQEAdkblgGpslLJDEwNfrQIx0awIy0f8A2tihEmO5VmSuKj96AKHjnHd8nl+rR0Ihxlu5nTvqerZSIryejbDBXX2oBVdrHhxohtP35QByoHOyctPoIXOVa30cfZUOC9nN5KEbWaP8+fmFg4gu8Iuzd92J3WxMipppJjMuQjicpU4WDZiOLZ+eYZUFlauoo6dUiUhFTGbF/rKAaKXscQPpJeeVZr97BZo2/8GAJK+JQADVcXcUynGv5iDI3SaomHQJimZGrEtW6KQeBDG5Mo2N+r7KpX8IHQbkiCBmqRPBCoAMUKDLvoyyHAOgWyTY+YQG3sHGetZctXH1V85ui4KJwbY8A==</dsig:X509Certificate>
+                            <dsig:X509IssuerSerial>
+                                <dsig:X509IssuerName>CN=esbsswsd1, OU=Seguridad Web, O=Banco Bolivariano, L=Guayaquil, ST=Guayas, C=EC</dsig:X509IssuerName>
+                                <dsig:X509SerialNumber>671541405</dsig:X509SerialNumber>
+                            </dsig:X509IssuerSerial>
+                            <dsig:X509SubjectName>CN=esbsswsd1, OU=Seguridad Web, O=Banco Bolivariano, L=Guayaquil, ST=Guayas, C=EC</dsig:X509SubjectName>
+                            <dsig:X509SKI>ANonEqnaBYQu728irW8NnZPeuoE=</dsig:X509SKI>
+                        </dsig:X509Data>
+                    </dsig:KeyInfo>
+                </wsid:Identity>
+            </wsa:EndpointReference>
+        </WL5G3N2:port>
+    </WL5G3N2:service>
+</WL5G3N2:definitions>

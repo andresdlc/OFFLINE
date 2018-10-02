@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions name="RecaudacionLuz" targetNamespace="http://www.bolivariano.com/CashManagement/ws/RecaudacionLuz" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.bolivariano.com/CashManagement/MensajesRecaudacionLuz" xmlns:WL5G3N2="http://www.bolivariano.com/CashManagement/ws/RecaudacionLuz" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mc="http://www.bolivariano.com/CashManagement/MensajesRecaudacionLuz" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.bolivariano.com/CashManagement/ws/RecaudacionLuz" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.bolivariano.com/CashManagement/MensajesRecaudacionLuz" schemaLocation="MensajesRecaudacionLuz.xsd"/>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="mensajeEntradaObtenerSaldoPendiente">
+    <WL5G3N0:part element="WL5G3N1:MensajeEntradaObtenerSaldoPendiente" name="parametros"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="mensajeSalidaObtenerSaldoPendiente">
+    <WL5G3N0:part element="WL5G3N1:MensajeSalidaObtenerSaldoPendiente" name="parametros"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="mensajeEntradaPagar">
+    <WL5G3N0:part element="WL5G3N1:MensajeEntradaPagar" name="parametros"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="mensajeSalidaPagar">
+    <WL5G3N0:part element="WL5G3N1:MensajeSalidaPagar" name="parametros"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="RecaudacionLuzFault">
+    <WL5G3N0:part element="WL5G3N1:RecaudacionLuzFault" name="fault"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="RecaudacionLuzPortType">
+    <WL5G3N0:operation name="obtenerSaldoPendiente">
+      <WL5G3N0:input message="WL5G3N2:mensajeEntradaObtenerSaldoPendiente" name="MensajeEntradaObtenerSaldoPendiente"/>
+      <WL5G3N0:output message="WL5G3N2:mensajeSalidaObtenerSaldoPendiente" name="MensajeSalidaConsultarTarjetaCredito"/>
+      <WL5G3N0:fault message="WL5G3N2:RecaudacionLuzFault" name="fault"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="pagar">
+      <WL5G3N0:input message="WL5G3N2:mensajeEntradaPagar" name="mensajeEntradaPagar"/>
+      <WL5G3N0:output message="WL5G3N2:mensajeSalidaPagar" name="mensajeSalidaPagar"/>
+      <WL5G3N0:fault message="WL5G3N2:RecaudacionLuzFault" name="fault"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="RecaudacionLuzSOAP11Binding" type="WL5G3N2:RecaudacionLuzPortType">
+    <WL5G3N3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="obtenerSaldoPendiente">
+      <WL5G3N3:operation soapAction="http://www.bolivariano.com/CashManagement/ws/RecaudacionLuz/obtenerSaldoPendiente" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body parts="parametros" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body parts="parametros" use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N3:fault name="fault" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="pagar">
+      <WL5G3N3:operation soapAction="http://www.bolivariano.com/CashManagement/ws/RecaudacionLuz/pagar" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body parts="parametros" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body parts="parametros" use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N3:fault name="fault" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="RecaudacionLuzSOAP11BindingQSService">
+    <WL5G3N0:port binding="WL5G3N2:RecaudacionLuzSOAP11Binding" name="RecaudacionLuzSOAP11BindingQSPort">
+      <WL5G3N3:address location="http://esbsswsd1.bolivariano.fin.ec:8011/Recaudacion/proxy/RecaudacionLuz"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

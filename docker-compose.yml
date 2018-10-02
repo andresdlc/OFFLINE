@@ -1,0 +1,137 @@
+version: '3'
+services:
+    arbs-balancer:
+          container_name: arbs-balancer
+          image: nginx:latest
+          volumes:
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/nginx/nginx1.conf:/etc/nginx/conf.d/nginx1.conf
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/nginx/ssl/:/etc/nginx/ssl
+          ports:
+            - 443:443
+          networks:
+            testing_net:
+                ipv4_address: 172.29.1.10
+    offline-balancer:
+          container_name: offline-balancer
+          image: nginx:latest
+          volumes:
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/nginx/nginx1.conf:/etc/nginx/conf.d/nginx1.conf
+          ports:
+            - 8080
+          networks:
+            testing_net:
+                ipv4_address: 172.29.1.11
+    reentry01:
+          container_name: reentry01
+          image: reentrybb-img
+          volumes:
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/install/:/install
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/conf/:/conf
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/logs/:/logs
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/:/common
+            - /etc/hosts:/etc/hosts
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/jssecacerts:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/jssecacerts
+          ports:
+            - 9001:9001
+          networks:
+            testing_net:
+                ipv4_address: 172.29.1.50
+#          build:
+#            context: ./Dockerfiles/reentry
+#            dockerfile: Dockerfile
+    arbs01:
+          container_name: arbs01
+          image: arbitrobb-img
+          volumes:
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/install/:/install
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/conf/:/conf
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/logs/:/logs
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/:/common
+            - /etc/hosts:/etc/hosts
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/jssecacerts:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/jssecacerts
+          ports:
+            - 7101
+          networks:
+            testing_net:
+                ipv4_address: 172.29.1.3
+#          build:
+#            context: ./Dockerfiles/arbitro
+#            dockerfile: Dockerfile
+    arbs02:
+          container_name: arbs02
+          image: arbitrobb-img
+          volumes:
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/install/:/install
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/conf/:/conf
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/arbitro/logs/:/logs
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/:/common
+            - /etc/hosts:/etc/hosts
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/jssecacerts:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/jssecacerts
+          ports:
+            - 7101
+          networks:
+            testing_net:
+                ipv4_address: 172.29.1.4
+#          build:
+#            context: ./Dockerfiles/arbitro
+#            dockerfile: Dockerfile
+    offs01:
+          container_name: offs01
+          image: offlinebb-img
+          volumes:
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/offline/install/:/install
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/offline/conf/:/conf
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/offline/logs/:/logs
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/:/common
+            - /etc/hosts:/etc/hosts
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/jssecacerts:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/jssecacerts
+          ports:
+            - 7700
+          networks:
+            testing_net:
+                ipv4_address: 172.29.1.1
+#          build:
+#            context: ./Dockerfiles/offline
+#            dockerfile: Dockerfile
+    offs02:
+          container_name: offs02
+          image: offlinebb-img
+          volumes:
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/offline/install/:/install
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/offline/conf/:/conf
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/offline/logs/:/logs
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/common/:/common
+            - /etc/hosts:/etc/hosts
+            - /mnt/hgfs/IMAGENESDOCKER/microservices/offline/install/jssecacerts:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/jssecacerts
+          ports:
+            - 7700
+          networks:
+            testing_net:
+                ipv4_address: 172.29.1.2
+#          build:
+#            context: ./Dockerfiles/offline
+#            dockerfile: Dockerfile
+    redis:
+        image: redis:alpine
+        container_name: arb-redis
+        networks:
+            testing_net:
+                ipv4_address: 172.29.1.13
+    php-redis-admin:
+        image: faktiva/php-redis-admin
+        container_name: pra
+        environment:
+            - PHPREDMIN_DATABASE_REDIS_0_HOST=redis
+        ports:
+            - 8081:8081
+        networks:
+            testing_net:
+                ipv4_address: 172.29.1.12
+        depends_on:
+            - redis
+networks:
+    testing_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.29.0.0/16

@@ -1,0 +1,1652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.bolivariano.com/Cliente" xmlns:Q1="http://www.bolivariano.com/Enumerados" xmlns:cli="http://www.bolivariano.com/Persona" xmlns:cln="http://www.bolivariano.com/Cliente" xmlns:s1="http://www.bolivariano.com/Producto" xmlns:suc="http://www.bolivariano.com/Sucursal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+    <xs:import namespace="http://www.bolivariano.com/Enumerados" schemaLocation="Enumerados.xsd"/>
+    <xs:import namespace="http://www.bolivariano.com/Producto" schemaLocation="Producto.xsd"/>
+	<xs:import namespace="http://www.bolivariano.com/Sucursal" schemaLocation="Sucursal.xsd"/>
+	<xs:import namespace="http://www.bolivariano.com/Persona" schemaLocation="Persona.xsd"/>
+	
+        <xs:complexType name="Contacto">
+            <xs:sequence>                
+                <xs:element maxOccurs="1" minOccurs="0" name="direccion" nillable="false" type="cln:Direccion"/>
+                <xs:element maxOccurs="2" minOccurs="0" name="telefono" nillable="false" type="cln:Telefono"/>
+            </xs:sequence>
+         </xs:complexType>
+        
+        
+	<xs:element name="Cliente" type="cln:Cliente"/>
+	<xs:complexType name="Cliente">
+		<xs:annotation>
+			<xs:documentation>Definicion de esquema para entidad cliente
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cli:Persona">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="beneficiario" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="categoriaEnte" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Categoria Ente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="codigoBeneficiarioMis" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Codigo cliente beneficiario del Mis
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="codigoCliente" type="xs:int"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="codigoClienteMis" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>ente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="comentarios" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Comentarios</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="compania" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="concepto" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="condicionLaboral" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Condicion Laboral</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="condicionPasaporte" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Condicion Pasaporte</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="correoElectronico" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Correo Electronico</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="descripcion" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Descripcion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="dependiente" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="duenoPlanilla" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Dueo planilla</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="empleados" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Empleados</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="esEmpleado" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Indica si es empleado del banco
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>   
+					<!--<xs:element name="estadoCivil" type="xs:string" minOccurs="0" maxOccurs="1"> 
+						<xs:annotation> <xs:documentation>Estado Civil</xs:documentation> </xs:annotation> 
+						</xs:element> -->
+					<xs:element maxOccurs="1" minOccurs="0" name="estadoCliente" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Estado Cliente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="estadoCuenta" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Estado Cuenta</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="estudios" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Estudios</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="extResidente" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="fecha" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>Fecha</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaApertura" type="xs:dateTime"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaCaducidad" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Fecha Caducidad</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaConstitucion" type="xs:date">
+						<xs:annotation>
+							<xs:documentation>Fecha Constitucion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaCortePatrimonio" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>Fecha Corte Patrimonio</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaIngreso" type="xs:dateTime"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaModificacion" type="xs:dateTime"/>
+					<!--<xs:element name="fechaNacimiento" type="xs:date" minOccurs="0" 
+						maxOccurs="1"> <xs:annotation> <xs:documentation>Fecha Nacimiento</xs:documentation> 
+						</xs:annotation> </xs:element> -->
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaVerificacion" type="xs:date">
+						<xs:annotation>
+							<xs:documentation>Fecha de verificaci��n de llamada del
+								contact center
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fijos" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Fijos</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="grupoEC" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Grupo EC</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idBanco" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Codigo Banco</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idCanton" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Codigo Canton</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idCiudad" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Codigo Ciudad</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idCliente" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>ID de cliente MIS</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idCuenta" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Codigo Tarjeta</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idEnteDerecho" type="xs:int"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="idEnteIzquierdo" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="idPais" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Codigo Pais</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idParroquia" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Codigo Parroquia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idZona" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Codigo Zona</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="montosVentas" type="xs:float">
+						<xs:annotation>
+							<xs:documentation>Montos Ventas</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="nacionalidad" type="xs:string" minOccurs="0" maxOccurs="1"> 
+						<xs:annotation> <xs:documentation>Nacionalidad</xs:documentation> </xs:annotation> 
+						</xs:element> -->
+					<xs:element maxOccurs="1" minOccurs="0" name="negocioPrincipales" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Negocio Principales</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="nivelAcademico" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Nivel Academico</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="nombre" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Nombre Completo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="nombreGrupo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Nombre Grupo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="nombreVerifica" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Persona que recibe la llamada
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="numeroCargas" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Numero de Cargas</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="numeroEmpleados" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Numero de Empleados</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="numeroCifras" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Numero de Cifras</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="nombreOficial" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Nombre oficial
+							</xs:documentation>
+						</xs:annotation>
+				</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="oficial" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Oficial</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					 <xs:element maxOccurs="1" minOccurs="0" name="oficina" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>oficina</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="oficialJefe" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Oficial jefe</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="sucursalManejo" type="suc:Sucursal">
+						<xs:annotation>
+							<xs:documentation>Oficina donde se registro el cliente
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="operacion" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="origen" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Origen</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="patrimonioTecnico" type="xs:float">
+						<xs:annotation>
+							<xs:documentation>Patrimonio tecnica</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="primerNombre" type="xs:string" minOccurs="0" maxOccurs="1"> 
+						<xs:annotation> <xs:documentation>Primer Nombre</xs:documentation> </xs:annotation> 
+						</xs:element> -->
+					<!--<xs:element name="profesion" type="xs:string" minOccurs="0" maxOccurs="1"> 
+						<xs:annotation> <xs:documentation>Profesion</xs:documentation> </xs:annotation> 
+						</xs:element> -->
+					<xs:element maxOccurs="1" minOccurs="0" name="region" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Region</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="relacion" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Relacion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="valorMaximoDireccion" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>valor maximo direccion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="residente" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Residente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="roleCliente" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Role Cliente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="sectorPublico" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Sector Publico</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="segmentoOficial" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Segmento oficial</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="segundoNombre" type="xs:string" minOccurs="0" 
+						maxOccurs="1"> <xs:annotation> <xs:documentation>Segundo Nombre</xs:documentation> 
+						</xs:annotation> </xs:element> -->
+					<xs:element maxOccurs="1" minOccurs="0" name="separacionBienes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Separacion de Bienes</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="sexo" type="xs:string" minOccurs="0" maxOccurs="1"> 
+						<xs:annotation> <xs:documentation>Sexo</xs:documentation> </xs:annotation> 
+						</xs:element> -->
+					<xs:element maxOccurs="1" minOccurs="0" name="situacionLaboral" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Situacion Laboral</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="subConcepto" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Subconcepto</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tiempoConocido" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Tiempo conocido</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tiempoResidente" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Tiempo residente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoCliente" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo cliente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoCompania" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo Compa��ia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoId" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoNacionalidad" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo nacionalidad</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoPerjuridica" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Tipo perjuridica</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoPersona" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo persona</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoResidencia" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo residencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoSector" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo sector</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoSectorPublico" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo sector publico</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="trabajo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Trabajo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="transaccion" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Transaccion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="usuario" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Usuario</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="validaDirecciones" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Valida el maximo de direcciones por
+								Cliente
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="validaPresencial" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>valida verificaci��n presencial para
+								extranjeros
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="valorArriendo" type="xs:float"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="verificado" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Indicador si o no verificacion
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="vigencia" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Vigencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="vigenciaVerificacion" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>Vigencia verificacion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="representanteLegal" type="cln:Identificacion"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="referenciasLaborales" type="cln:ReferenciaLaboral"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="dependencias" type="cln:Dependientes"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="egresos" type="cln:Egreso"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="referenciasComerciales" type="cln:ReferenciaComercial"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="referenciasPersonales" type="cln:ReferenciaPersonal"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="representanteLegal2" type="cln:Identificacion"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="pasivos" type="cln:Pasivo"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="malaReferencia" type="cln:MalaReferencia"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="informacionFinanciera" type="cln:DatosFinancieros"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="direcciones" type="cln:Direccion"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="garantiasPersonales" type="cln:GarantiasPersonales"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="referenciasBancaria" type="cln:ReferenciaBancaria"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="identificaciones" type="cln:Identificacion">
+						<xs:annotation>
+							<xs:documentation>Identificaciones del cliente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="activos" type="cln:Activo"/>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="telefonos" type="cln:Telefono">
+						<xs:annotation>
+							<xs:documentation>Telefonos de contacto del cliente
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="ingresos" type="cln:Ingreso"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="tarjetas" type="cln:DatosTarjeta"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="autenticacion" type="cln:Autenticacion">
+						<xs:annotation>
+							<xs:documentation>Mecanismos de autenticacion disponibles para el
+								cliente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+                                        <xs:element maxOccurs="1" minOccurs="0" name="contactos" nillable="false">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element maxOccurs="unbounded" minOccurs="1" name="contacto" nillable="false" type="cln:Contacto"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ReferenciaPersonal" type="cln:ReferenciaPersonal"/>
+	<xs:complexType name="ReferenciaPersonal">
+		<xs:complexContent>
+			<xs:extension base="cln:Referencia">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="enteDerecho" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Identificador ente derecho</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="enteIzquierdo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Identificador ente izquierdo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="parentesco" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Parentesco</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="referencia" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Referencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="relacion" type="xs:int"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="sentido" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Sentido</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="sentidoDerecho" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Arbol Genealogico</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="sentidoIzquierdo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Arbol Genealogico</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="sentidoNormal" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Arbol Genealogico</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tiempoParticipacion" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Tiempo participacion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="trabajo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Trabajo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="verificacionPresencial" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Verificacion presencial</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="GarantiasPersonales" type="cln:GarantiasPersonales"/>
+	<xs:complexType name="GarantiasPersonales">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="actividadEconomica" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Actividad Economica saca datos de un catalogo
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="cantos" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="cargoVerifica" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="casoPadre" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="clase" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoCliente" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoExterno" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoInterno" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="comentariosMis" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="condicion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="custodia" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Custodia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="descripcion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>descripcion bien</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="DetalleCustodia" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="detalleDesembolso" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="detalleGarantia" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="estadoCustodia" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaAvaluo" type="xs:dateTime"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaModificacion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaNacimiento" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="garante" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="moneda" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="nacionalidad" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="nombre" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="nombreVerifica" type="xs:string"/>			
+			<xs:element minOccurs="0" name="oficinaContabiliza" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="pais" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="principal" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="propietario" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="proposito" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="provincia" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tarjeta" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoBien" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo de bien</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoCustodia" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoGarantia" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="valorCustodia" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Valor Actual Custodia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="valorGarantia" type="xs:double"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="valorInicial" type="xs:float"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="valorter" type="xs:float"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="verificadoSN" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>verificado si o no</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="verisicadoSN" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="vigenciaVerificacion" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DatosFinancieros" type="cln:DatosFinancieros"/>
+	<xs:complexType name="DatosFinancieros">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="concepto" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>concepto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="frecuencia" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Frecuencia Ingresos/Egresos</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="idMoneda" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Moneda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="monto" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Monto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="observacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Observacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="transaccion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Monto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReferenciaBancaria" type="cln:ReferenciaBancaria"/>
+	<xs:complexType name="ReferenciaBancaria">
+		<xs:complexContent>
+			<xs:extension base="cln:Referencia">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="1" name="fechaApertura" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Fecha apertura</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="fechaTarjeta" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>fecha tarjeta</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idBanco" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Banco</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idReferencia" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>referencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="institucion" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>institucion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="institucionSeguro" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>seguro</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="numeroCifras" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>numero cifras</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="socioDesde" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Socio desde</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tarjeta" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tarjeta</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoCuenta" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoPoliza" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo poliza</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoSaldo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo saldo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="TarjetaCredito" type="s1:TarjetaCredito"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MalaReferencia" type="cln:MalaReferencia"/>
+	<xs:complexType name="MalaReferencia">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="anulada" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>anulada</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="archivoNegativo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Archivo Negativo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="calificacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Calificacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="carteraCastiga" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Cart.Castiga</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="carteraDemanda" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Cart.Demanda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="carteraInactiva" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Cartera inactiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="carteraPorVencer" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Cartera vencida</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="carteraVenciada" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Cartera vencida</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="entidad" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Entidad</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaCorte" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Fecha corte</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="inhabilitado" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Inhabilitado</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoCredito" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo Credito</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoRiesgo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo Riesgo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Egreso" type="cln:Egreso"/>
+	<xs:complexType name="Egreso">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="descripcion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Descripcion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="idEgreso" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>codigo egreso</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="monto" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Monto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoEgreso" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo de egreso: Costos Y Gtos Men i_valor_gasto
+						i_arriendo_mes i_educacion i_egr_alim i_gto_adm
+						i_gto_noper i_ot_egreso i_tarjeta_cred
+						i_vehiculo
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Nombramiento" type="cln:Nombramiento"/>
+	<xs:complexType name="Nombramiento">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="condicion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="descripcionCondicion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaInsc" nillable="true" type="xs:date"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaNombramiento" nillable="true" type="xs:date"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaVcto" nillable="true" type="xs:date"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="nombre" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="numero" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="numeroIdentificacion" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="observacion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="periodo" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="plazo" nillable="true" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="poder" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="principal" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipo" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DatosTarjeta" type="cln:DatosTarjeta"/>
+	<xs:complexType name="DatosTarjeta">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoIdentificacionTarjeta" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo identificacion tarjeta</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoSolicitudTarjeta" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo solicitud tarjeta</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoTarjetaTitular" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo de tarjeta de titular de cuenta
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="usuarioSolicitudTarjeta" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Usuario solicitud de tarjeta</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReferenciaComercial" type="cln:ReferenciaComercial"/>
+	<xs:complexType name="ReferenciaComercial">
+		<xs:complexContent>
+			<xs:extension base="cln:Referencia">
+<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="cargoVerifica" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Cargo verifica</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="cifrasConsumo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Cifras consumo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="compra" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Compra</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="cuenta" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Cuenta</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="tarjeta" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tarjeta</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="estado" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Estado</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fecha" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>fecha</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="idInstitucion" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Codigo institucion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="numeroCifraConsumo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Numero cifra consumo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="numeroCifras" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Numero cifras</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="referencia" type="xs:string"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="sobreGirados" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>sobre girados</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="socioDesde" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>socio desde</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="subtipoReferencia" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>subtipo referencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoCifra" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo cifra</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoCifraConsumo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>tipo cifra consumo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoReferencia" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo referencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Identificacion" type="cln:Identificacion"/>
+	<xs:complexType name="Identificacion">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaCaducidad" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Fecha caducidad</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaCreacion" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Fecha de creacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="identificacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Valor de identificacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoIdentificacion" type="Q1:TipoIdentificacionPersona">
+				<xs:annotation>
+					<xs:documentation>
+						Tipo de identificacion. C=Cedula, R=RUC,
+						P=Pasaporte, O=Otros
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Pasivo" type="cln:Pasivo"/>
+	<xs:complexType name="Pasivo">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="chequeProtestado" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>cheque Protestado</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="comercio" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Comercio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="cuenta" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Cuenta</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="deuda" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Deuda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="institucionCuenta" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Institucion Cuenta</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="monto" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Monto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="nombreInstitucion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Nombre Institucion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="numeroDeuda" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Numero deuda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="plazo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Plazo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="saldo" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Saldo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoDeuda" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo deuda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoPlazo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo plazo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="valor" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>valor</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="valorCuota" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Valor cuota</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Referencia" type="cln:Referencia"/>
+	<xs:complexType name="Referencia">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="afinidadBPM" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Afinidad BPM</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="anio" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Anio de verificacion de referencias
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="calificacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Calificacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="campanaBPM" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Campania de BPM</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="canalBPM" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Canal BPM</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="casoBPM" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoCliente" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Codigo del Cliente</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="descripcionReferencia" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="detenerTransaccion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="estadoVerificacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Estado de verificacion de Referencias
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="limitaciones" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="nombre" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="nombreComp" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="numeroCifras" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Numero cifras</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="numeroId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="observacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>observacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="pApellido" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="producto" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="solicitud" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="subProducto" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Sub Producto BMP</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoCifras" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoId" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="verificado" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicador si o no verificacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="vigencia" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Vigencia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="vigenciaVerificacion" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Vigencia Verificacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="telefonos" type="cln:Telefono"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReferenciaLaboral" type="cln:ReferenciaLaboral"/>
+	<xs:complexType name="ReferenciaLaboral">
+		<xs:complexContent>
+			<xs:extension base="cln:Referencia">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="actividad" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Actividad</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="actividadaDetalle" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>actividad detalle</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="actividadEconomica" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Actividad econimica</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="antiguedadLaboral" type="xs:int"/>
+					<xs:element maxOccurs="1" minOccurs="0" name="antiguedad" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Antiguedad</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="antiguedadNegativa" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Antiguedad negativa</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="antiguedadZona" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Antiguedad zona</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="areaDepartamento" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Area departamento</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="cargoActual" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>cargo actual</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="empresa" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>empresa</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="empresaActual" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>string</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaFinalizacion" type="xs:date">
+						<xs:annotation>
+							<xs:documentation>Fecha fin trabajo anterior</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaIngreso" type="xs:date">
+						<xs:annotation>
+							<xs:documentation>Fecha ingreso</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaIngresoUltimo" type="xs:date">
+						<xs:annotation>
+							<xs:documentation>Fecha ingreso trabajo anterior
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="fechaSalida" type="xs:date">
+						<xs:annotation>
+							<xs:documentation>Fecha salida</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="jefeInmediato" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Jefe inmediato</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="negocioDomicilio" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Negocio En Domicilio</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="negocioPrincipal" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Negocio Principal</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="personalEventual" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Situa Personal Eventual</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="personalFijo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Personal Fijo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="presencial" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>presencial</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="referenciaActual" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Ref.Laboral Actual</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="sectorTrabajo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Sec Trabajo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="sueldo" type="xs:float">
+						<xs:annotation>
+							<xs:documentation>Sueldo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoContrato" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo Contrato</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoLugarNegocio" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo Lugar Negocio</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoNegocio" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo Negocio</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="tipoTelefono" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Tipo de tel��fono trabajo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="trabajo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>trabajo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Telefono" type="cln:Telefono"/>
+	<xs:complexType name="Telefono">
+		<xs:annotation>
+			<xs:documentation>Telefono</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="extension" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Extension</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="fechaCortePatrimonial" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Fecha de corte patrimonial</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="idRegion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Region</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="localidad" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Localidad</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="numeroTelefono" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="pertenece" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Pertenece a</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="secTelefono" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Indicador de Cobis por telefono
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoLineaCelular" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo linea celualar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoTelefono" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo cliente. H=Casa, O=Oficina, C=Celular
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="valor" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Valor</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Ingreso" type="cln:Ingreso"/>
+	<xs:complexType name="Ingreso">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="descripcion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="operacion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoIngreso" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="monto" type="xs:float"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoDetalle" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="origen" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoIngreso" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>tipo de ingreso:i_costo_vta i_div_percb
+						i_exportacion i_honorarios i_ing_conyuge
+						i_ot_ing i_rend_finan i_seguros i_serv_basico
+						i_sueldo i_total_ingadic i_total_ingutl
+						i_total_ingvar i_valor i_vtas_netas Valor
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Direccion" type="cln:Direccion"/>
+	<xs:complexType name="Direccion">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="alerta" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>EnAlertManager</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="arrendador" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Arrendador</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="arrendatario" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Arrendatario</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="boletinBancario" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Boletin Bancario</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="cargoVerificador" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>cargoVerificador</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="casilla" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Casilla</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="codigoRelacionPropietario" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Codigo relacion propietario</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="codigoVerificacion" type="xs:string"/>
+			<xs:element minOccurs="0" name="cuenta" type="xs:string"/>
+			<xs:element minOccurs="0" name="tarjeta" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tarjeta asociada a la direccion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="descripcion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Descripcion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="direccionPlanilla" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>direccion planilla</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="envioBoletin" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>envioBoletin</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="envioCorrespondencia" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Envio correspondencia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="envioCRP" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>envio CRP</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="esDomicilio" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Es domicilio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="esMedioEnvio" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Es medio de envio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="fechaCaduca" nillable="true" type="xs:date"/>
+			<xs:element minOccurs="0" name="fechaIng" nillable="true" type="xs:date"/>
+			<xs:element minOccurs="0" name="fechaMod" nillable="true" type="xs:date"/>
+			<xs:element minOccurs="0" name="fechaVerificacionDireccion" nillable="true" type="xs:date"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="idDireccion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Codigo Direccion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="nombreVerificador" type="xs:string"/>
+			<xs:element minOccurs="0" name="usuarioReg" type="xs:string"/>
+			<xs:element minOccurs="0" name="usuarioModifica" type="xs:string"/>
+			<xs:element minOccurs="0" name="verifIncon" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="numeroDireccion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Numero direccion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="observacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Observacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="presencial" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Presencia (i_vrf_presencial)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="principal" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Principal</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="propietario" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Propietario</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="referencia" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Direcci��n de la Referencia Comercial
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="relacionPlanilla" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Relacion Planilla</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="sector" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Sector</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="sectorZona" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Sector Zona</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tiempoRespuesta" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Tiempo respuesta</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoCasilla" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo casilla</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoDireccion" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoServicio" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo servicio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="valorVivienda" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Valor vivienda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoVivienda" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo vivienda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="verificado" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Indicador si o no verificacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="vigencia" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Vigencia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Activo" type="cln:Activo"/>
+	<xs:complexType name="Activo">
+		<xs:annotation>
+			<xs:documentation>Activo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="anio" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Anio</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="localidad" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>localidad</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="descripcion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Descripcion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="extensionMetros" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Extension Metros</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="hipotecado" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Hipotecado</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="marca" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Marca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="modelo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Modelo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="monto" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Monto</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="prendado" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Prendado</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="propiedad" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Propiedad</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoActivo" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Tipo Activo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoBien" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Tipo de Bien</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="ubicacion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Ubicacion</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="valor" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Valor</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="valorVivienda" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Valor Vivienda</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Dependientes" type="cln:Dependientes"/>
+	<xs:complexType name="Dependientes">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="NumeroPersonas" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="parentesco" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="tipoId" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Autenticacion">
+		<xs:annotation>
+			<xs:documentation>Definicion de metodos de autenticacion de un
+				cliente</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="Tipo" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

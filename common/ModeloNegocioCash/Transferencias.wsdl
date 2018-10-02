@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Transferencias" targetNamespace="http://www.bolivariano.com/ws/Transferencias/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N2="http://www.bolivariano.com/ws/Transferencias/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.bolivariano.com/CashManagement/MensajeTransferencias">
+<wsp:Policy wsu:Id="TransferenciasBindingSOAP11QSPort_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+<wsp:Policy wsu:Id="TransferenciasBindingSOAP11QSPort_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<sp:Body/>
+<sp:Header Namespace="http://www.w3.org/2005/08/addressing"/>
+<sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+<sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0"/>
+</sp:SignedParts>
+<sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<sp:Body/>
+<sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0"/>
+</sp:EncryptedParts>
+</wsp:Policy>
+<wsp:Policy wsu:Id="TransferenciasBindingSOAP11QSPort_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<sp:Body/>
+</sp:SignedParts>
+<sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<sp:Body/>
+</sp:EncryptedParts>
+</wsp:Policy>
+<wsp:Policy wsu:Id="wss11_username_token_with_message_protection_service_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:ProtectionToken>
+<wsp:Policy>
+<sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+<wsp:Policy>
+<sp:RequireThumbprintReference/>
+<sp:WssX509V3Token11/>
+</wsp:Policy>
+</sp:X509Token>
+</wsp:Policy>
+</sp:ProtectionToken>
+<sp:AlgorithmSuite>
+<wsp:Policy>
+<sp:Basic128/>
+</wsp:Policy>
+</sp:AlgorithmSuite>
+<sp:Layout>
+<wsp:Policy>
+<sp:Lax/>
+</wsp:Policy>
+</sp:Layout>
+<sp:IncludeTimestamp/>
+<sp:OnlySignEntireHeadersAndBody/>
+</wsp:Policy>
+</sp:SymmetricBinding>
+<sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+<wsp:Policy>
+<sp:WssUsernameToken10/>
+</wsp:Policy>
+</sp:UsernameToken>
+</wsp:Policy>
+</sp:SignedSupportingTokens>
+<sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:RequireSignatureConfirmation/>
+<sp:MustSupportRefEncryptedKey/>
+</wsp:Policy>
+</sp:Wss11>
+</wsp:Policy>
+    <wsdl:types>
+        <xsd:schema xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.bolivariano.com/ws/Transferencias/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.bolivariano.com/CashManagement/MensajeTransferencias">
+            <xsd:import namespace="http://www.bolivariano.com/CashManagement/MensajeTransferencias" schemaLocation="MensajesCanonicos/MensajeTransferencias.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="obtenerComprobanteSwiftRequest">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeEntradaObtenerComprobanteSwift"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerComprobanteSwiftResponse">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeSalidaObtenerComprobanteSwift"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerTransaccionesSwiftRequest">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeEntradaObtenerTransaccionesSwift"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerTransaccionesSwiftResponse">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeSalidaObtenerTransaccionesSwift"/>
+    </wsdl:message>
+    <wsdl:message name="mensajeEntradaObtenerBancosPagoDirecto">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeEntradaObtenerBancosPagoDirecto"/>
+    </wsdl:message>
+    <wsdl:message name="mensajeSalidaObtenerBancosPagoDirecto">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeSalidaObtenerBancosPagoDirecto"/>
+    </wsdl:message>
+    <wsdl:message name="mensajeEntradaValidarProductoOtrosBancos">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeEntradaValidarProductoOtrosBancos"/>
+    </wsdl:message>
+    <wsdl:message name="mensajeSalidaValidarProductoOtrosBancos">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeSalidaValidarProductoOtrosBancos"/>
+    </wsdl:message>
+    <wsdl:message name="ejecutarTransferenciaRequest">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeEntradaEjecutarTransferencia"/>
+    </wsdl:message>
+    <wsdl:message name="ejecutarTransferenciaResponse">
+        <wsdl:part name="parameters" element="WL5G3N1:mensajeSalidaEjecutarTransferencia"/>
+    </wsdl:message>
+    <wsdl:portType name="Transferencias">
+        <wsdl:operation name="obtenerComprobanteSwift">
+            <wsdl:input message="WL5G3N2:obtenerComprobanteSwiftRequest"/>
+            <wsdl:output message="WL5G3N2:obtenerComprobanteSwiftResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerTransaccionesSwift">
+            <wsdl:input message="WL5G3N2:obtenerTransaccionesSwiftRequest"/>
+            <wsdl:output message="WL5G3N2:obtenerTransaccionesSwiftResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerBancosPagoDirecto">
+            <wsdl:input message="WL5G3N2:mensajeEntradaObtenerBancosPagoDirecto"/>
+            <wsdl:output message="WL5G3N2:mensajeSalidaObtenerBancosPagoDirecto"/>
+        </wsdl:operation>
+        <wsdl:operation name="validarProductoOtrosBancos">
+            <wsdl:input message="WL5G3N2:mensajeEntradaValidarProductoOtrosBancos"/>
+            <wsdl:output message="WL5G3N2:mensajeSalidaValidarProductoOtrosBancos"/>
+        </wsdl:operation>
+        <wsdl:operation name="ejecutarTransferencia">
+            <wsdl:input message="WL5G3N2:ejecutarTransferenciaRequest"/>
+            <wsdl:output message="WL5G3N2:ejecutarTransferenciaResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TransferenciasBindingSOAP11" type="WL5G3N2:Transferencias">
+        <WL5G3N3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsp:PolicyReference URI="#wss11_username_token_with_message_protection_service_policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+        <wsdl:operation name="obtenerComprobanteSwift">
+            <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/obtenerComprobanteSwift"/>
+            <wsdl:input>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Input_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:input>
+            <wsdl:output>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Output_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerTransaccionesSwift">
+            <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/obtenerTransaccionesSwift"/>
+            <wsdl:input>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Input_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:input>
+            <wsdl:output>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Output_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerBancosPagoDirecto">
+            <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/obtenerBancosPagoDirecto"/>
+            <wsdl:input>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Input_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:input>
+            <wsdl:output>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Output_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="validarProductoOtrosBancos">
+            <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/validarProductoOtrosBancos"/>
+            <wsdl:input>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Input_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:input>
+            <wsdl:output>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Output_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ejecutarTransferencia">
+            <WL5G3N3:operation soapAction="http://www.bolivariano.com/Transferencias/ejecutarTransferencia"/>
+            <wsdl:input>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Input_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:input>
+            <wsdl:output>
+                <WL5G3N3:body use="literal"/>
+      <wsp:PolicyReference URI="#TransferenciasBindingSOAP11QSPort_Output_Policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TransferenciasBindingSOAP11QSService">
+        <wsdl:port name="TransferenciasBindingSOAP11QSPort" binding="WL5G3N2:TransferenciasBindingSOAP11">
+            <WL5G3N3:address location="http://esbsswsd1.bolivariano.fin.ec:8011/Transferencia/proxy/Transferencias"/>
+            <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+                <wsa:Address>http://esbsswsd1.bolivariano.fin.ec:8011/Transferencia/proxy/Transferencias</wsa:Address>
+                <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+                    <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                        <dsig:X509Data>
+                            <dsig:X509Certificate>MIIDkzCCAnugAwIBAgIEKAbonTANBgkqhkiG9w0BAQUFADB6MQswCQYDVQQGEwJFQzEPMA0GA1UECBMGR3VheWFzMRIwEAYDVQQHEwlHdWF5YXF1aWwxGjAYBgNVBAoTEUJhbmNvIEJvbGl2YXJpYW5vMRYwFAYDVQQLEw1TZWd1cmlkYWQgV2ViMRIwEAYDVQQDEwllc2Jzc3dzZDEwHhcNMTQxMjA5MTkzMjM5WhcNMjQxMjA2MTkzMjM5WjB6MQswCQYDVQQGEwJFQzEPMA0GA1UECBMGR3VheWFzMRIwEAYDVQQHEwlHdWF5YXF1aWwxGjAYBgNVBAoTEUJhbmNvIEJvbGl2YXJpYW5vMRYwFAYDVQQLEw1TZWd1cmlkYWQgV2ViMRIwEAYDVQQDEwllc2Jzc3dzZDEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUb0e5DLiTxSaTz5lEGkX/7W+Nw8Jie953TJPKLb+tdV655/KkRKvSxXglPrnGQMRvQvY0JZ7T4pqw97mFWmW5TKiRwTxDisDV8X/64vDgO6ENkpoCJ6zeJX9EmQKKFTAvNeGWpTCgKh+sq53csxQJKuMDtTtFo5xs3mv7pDkP4Bcomg6y0hlfQcHgYEjK3MPVFotWfxNiahDi7wOeXLUPtDVL/pnjEHRHYCG0F8xt7vhbGQq0sTpmDBrs/0zw7z4zr6M6p60p4UvkNeh/nPl86cHbTy/qTdgBzb2aMWxckGKnK6CB5joEsVDagxj5f+ELzyjz0j0fE4xIrQ9weNSLAgMBAAGjITAfMB0GA1UdDgQWBBQA2icSqdoFhC7vbyKtbw2dk966gTANBgkqhkiG9w0BAQUFAAOCAQEAdkblgGpslLJDEwNfrQIx0awIy0f8A2tihEmO5VmSuKj96AKHjnHd8nl+rR0Ihxlu5nTvqerZSIryejbDBXX2oBVdrHhxohtP35QByoHOyctPoIXOVa30cfZUOC9nN5KEbWaP8+fmFg4gu8Iuzd92J3WxMipppJjMuQjicpU4WDZiOLZ+eYZUFlauoo6dUiUhFTGbF/rKAaKXscQPpJeeVZr97BZo2/8GAJK+JQADVcXcUynGv5iDI3SaomHQJimZGrEtW6KQeBDG5Mo2N+r7KpX8IHQbkiCBmqRPBCoAMUKDLvoyyHAOgWyTY+YQG3sHGetZctXH1V85ui4KJwbY8A==</dsig:X509Certificate>
+                            <dsig:X509IssuerSerial>
+                                <dsig:X509IssuerName>CN=esbsswsd1, OU=Seguridad Web, O=Banco Bolivariano, L=Guayaquil, ST=Guayas, C=EC</dsig:X509IssuerName>
+                                <dsig:X509SerialNumber>671541405</dsig:X509SerialNumber>
+                            </dsig:X509IssuerSerial>
+                            <dsig:X509SubjectName>CN=esbsswsd1, OU=Seguridad Web, O=Banco Bolivariano, L=Guayaquil, ST=Guayas, C=EC</dsig:X509SubjectName>
+                            <dsig:X509SKI>ANonEqnaBYQu728irW8NnZPeuoE=</dsig:X509SKI>
+                        </dsig:X509Data>
+                    </dsig:KeyInfo>
+                </wsid:Identity>
+            </wsa:EndpointReference>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

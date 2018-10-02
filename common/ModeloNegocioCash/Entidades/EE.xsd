@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.bolivariano.com/EE" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ee="http://www.bolivariano.com/EE" xmlns:rcd="http://www.bolivariano.com/Recaudo">
+	<xs:import namespace="http://www.bolivariano.com/Recaudo" schemaLocation="Recaudo.xsd"/>
+	<xs:element name="EE" type="ee:EE"/>
+	<xs:complexType name="EE">
+		<xs:annotation>
+			<xs:documentation>Modelo de negocio para Empresas de Electricidad
+				(Recaudo)
+				CNEL, EEG, EEQ></xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+		                <xs:extension base="rcd:Recaudo">
+				<xs:sequence>
+					<xs:element name="cantFactsPendiente" type="xs:int" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Cantidad de facturas que adeuda el abonado
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="codigoAdquiriente" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo de institucion financiera asignado por
+								CNEL - CATEG - EEQ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="codigoAutorizacionCNB" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo para actualizar la autorizacion de la
+								transaccion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="codigoAutorizador" type="xs:int" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo que sirve para identificar la
+								transaccion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="codigoOperador" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo operador. Codigo Usuario, FORMATO:
+								XXXNNN</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="codigoResultado" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo resultado - Codigo de Retorno
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="codigoSeguridad" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo seguridad asignado por EEG a la
+								Institucion
+								Financiera
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+
+					<xs:element name="codigoSuministro" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo suministro de empresa electrica
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+
+					<xs:element name="codigoTerminal" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo del terminal, enviado por el adquirente
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--ComisionVen -->
+					<xs:element name="comisionVen" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Comision Ven</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="comprobante" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Codigo Comprobante de Retencion
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--servicio -->
+					<xs:element name="consComision" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>cons_comision</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="consumoKWH" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Energia consumida por el abonado en Kilo-Vatios
+								Hora</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--detalle -->
+					<xs:element name="detalle" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Detalle</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="deudaAnterior" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Deuda pendiente que tenga el abonado, de los
+								cuales los 2 ultimos digitos son los decimales
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="digver" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Digito verificacion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="dirServicio" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Direccion del Servicio</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="factura" type="xs:string" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Num Fcatura</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element name="facturaElect" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Factura Elect</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fechaCompensacion" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Fecha compensacion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fechaFinVigAut" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>fecha Fin Vigencia Autorizacion
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fechaHoraAutorizador" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>fecha Hora Autorizador</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fechaIniVigAut" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>fecha Inicio Vigencia Autorizacion
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fechaTransaccionLocal" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>fecha transaccion local</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fechaValidez" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Fecha Validez</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fechaVencimiento" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Fecha Pago. Fecha maxima de pago de la planilla
+								dado en YYYYMMDD</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="grupo" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Grupo</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="horaTransaccionLocal" type="xs:int" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Hora transaccion local</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--servicio -->
+					<!--<xs:element name="indCosto" type="xs:float" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Ind Costo</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element name="indicadorReverso" type="xs:int" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>indicador Reverso</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="infraccion" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Factura a otros consumos y servicios
+								adicionales</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interesAcum" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Interes Acumulado</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="lecturaInicial" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>lecturaInicial</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="lecturaFinal" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>lecturaFinal</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="minimoPago" type="xs:float" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Valor Minimo de Pago</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element name="monedaProveedor" type="xs:int" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Moneda Proveedor</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--NotaVenta -->
+					<xs:element name="notaVenta" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nota Venta</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ptoEmision" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Punto Emision</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="rubroPerson" type="xs:string"
+						minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>rubro_person</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<!--Saldo -->
+					<!--<xs:element name="saldo" type="xs:float" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Saldo</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element name="secuencialAdquiriente" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Numero unico secuencial asignado por la
+								institucion financiera</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="secuencialAutorizador" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Numero secuencial unico asignado por el
+								Autorizador</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="secuencialMT" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Numero secuencial asignado por MACTRANS
+								obtenido desde
+								la base de datos.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="secuencia" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Secuencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--servicio -->
+					<xs:element name="servicio" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Servicio</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="servicioProveedor" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Servicio Proveedor</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="serviPerson" type="xs:string"
+						minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>servi_person</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="subtotal" type="xs:float" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Subtotal</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element name="tipoReparto" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Tipo de Reparto</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--Tipo Transaccion -->
+					<xs:element name="tipoTransaccion" type="xs:int" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>tipo transaccion</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="totalMes" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Valor del consumo mensual en dolares, de los
+								cuales los 2 ultimos digitos son los decimales
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--Total pendiente -->
+					<xs:element name="totalPendiente" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>totalPendiente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="totalPendienteProv" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>totalPendiente</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="transaccionOriginal" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>transaccionOriginal</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="transferencia" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Valor de Transferencia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--servicio -->
+					<!--<xs:element name="valorDesc" type="xs:string" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>valor_desc</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element name="valorPagado" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Valor Pagado</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="valorReten" type="xs:float" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Valor a Retener</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element name="valorRetenProv" type="xs:float" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Valor a Retener Proveedor</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element name="valorTotal" type="xs:float" minOccurs="0"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Valor Total</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+				</xs:sequence>
+			</xs:extension>
+                                   </xs:complexContent>
+	</xs:complexType>
+</xs:schema>

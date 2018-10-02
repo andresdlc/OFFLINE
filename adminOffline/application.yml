@@ -1,0 +1,16 @@
+server:
+  context-path: /
+  port: 9090
+spring.datasource:
+  url: jdbc:sybase:Tds:172.16.23.22:2050/cob_internet
+  username: apl_osb_hpdes
+  password: P4ssw0rd1 
+  driver-class-name: com.sybase.jdbc4.jdbc.SybDriver
+ 
+idEmpresa: 2
+idSucursal: 0
+perfil: M
+idAplicacion: 506
+idOrganizacion: 434
+redis.server: 172.16.30.194 
+redis.keyNameModoArbitro: modo

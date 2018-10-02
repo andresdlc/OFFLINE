@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.bolivariano.com/Enumerados" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.bolivariano.com/Enumerados">
+
+    <!--    definicion de enumeraciones y restricciones -->
+    
+    <simpleType name="TipoComprobanteElectronico">
+      <restriction base="string">
+        <enumeration value="FACTURA"/>
+        <enumeration value="NOTA_CREDITO"/>
+        <enumeration value="NOTA_DEBITO"/>
+        <enumeration value="RETENCION"/>
+        <enumeration value="GUIA_REMISION"/>
+		<enumeration value="TODOS"/>
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="TipoDescargaComprobanteElectronico">
+      <restriction base="string">
+        <enumeration value="XML"/>
+        <enumeration value="RIDE"/>        
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="TipoTransferencia">
+      <restriction base="string">
+        <enumeration value="PROPIAS"/>
+        <enumeration value="TERCEROS"/>        
+        <enumeration value="SPI"/>        
+        <enumeration value="PAGO_DIRECTO"/>
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="FamiliaProducto">
+      <restriction base="string">
+        <enumeration value="CUENTAS"/>
+        <enumeration value="TARJETAS"/>        
+        <enumeration value="PRESTAMOS"/>  
+        <enumeration value="DEPOSITOPLAZO"/>         
+       <!-- <enumeration value="INVERSIONES"/> -->
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="CategoriaPremio">
+      <restriction base="string">
+        <enumeration value="LICORES"/>
+        <enumeration value="TECNOLOGIA"/>        
+        <enumeration value="ORDEN_COMPRA"/>
+		<enumeration value="PASAJES_INTERNACIONALES"/>
+		<enumeration value="PASAJES_NACIONALES"/>
+		<enumeration value="HOTELES"/>
+		
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="TipoConsumoTarjetaCredito">
+      <restriction base="string">
+        <enumeration value="CORRIENTE"/>
+        <enumeration value="DIFERIDO"/>
+      </restriction>
+    </simpleType>
+
+    <simpleType name="TipoPertenenciaTarjeta">
+       <restriction base="string">
+        <enumeration value="TITULAR"/>
+        <enumeration value="ADICIONALES"/>
+        <enumeration value="TODOS"/>
+       </restriction>
+      </simpleType>
+      
+      <simpleType name="TipoIdentificacionPersona">
+       <restriction base="string">
+        <enumeration value="C"/>    <!-- CEDULA -->
+        <enumeration value="R"/>    <!-- RUC -->
+        <enumeration value="P"/>    <!-- PASAPORTE -->
+        <enumeration value="O"/>    <!-- OTROS  -->
+       </restriction>
+      </simpleType>
+      
+      <simpleType name="TipoCuenta">
+       <restriction base="string">
+        <enumeration value="AHO"/>    <!-- AHORRO -->
+        <enumeration value="CTE"/>    <!-- CORRIENTE -->
+        <enumeration value="VIR"/>    <!-- VIRTUAL -->        
+        <enumeration value="CTB"/>    <!-- CONTABLE -->
+        <enumeration value="ESP"/>    <!-- ESPECIAL -->        
+        <enumeration value="BAS"/>    <!-- BASICA -->        
+       </restriction>
+      </simpleType>
+	  
+	  <simpleType name="Subproducto">
+       <restriction base="string">
+        <enumeration value="BAS"/>    <!-- BASICA -->        
+       </restriction>
+      </simpleType>
+
+	  <simpleType name="TipoDireccion">
+       <restriction base="string">
+        <enumeration value="D"/>
+		<enumeration value="T"/>
+		<enumeration value="E"/>
+       </restriction>
+      </simpleType>
+
+	  <simpleType name="TipoTelefono">
+       <restriction base="string">
+        <enumeration value="M"/>
+		<enumeration value="T"/>
+		<enumeration value="D"/>
+       </restriction>
+      </simpleType>
+	  
+	  <simpleType name="TipoTarjeta">
+      <restriction base="string">
+        <enumeration value="CREDITO"/>
+        <enumeration value="DEBITO"/>        
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="TipoMedioEnvio">
+      <restriction base="string">
+        <enumeration value="CELULAR"/>
+        <enumeration value="EMAIL"/>        
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="PeriodicidadDepositoPlazo">
+      <restriction base="string">
+        <enumeration value="MEN"/>
+        <enumeration value="TRI"/>
+        <enumeration value="SEM"/>
+        <enumeration value="NNN"/>
+      </restriction>
+    </simpleType>
+
+    <simpleType name="TipoPaqueteMensajeria">
+      <restriction base="string">
+        <enumeration value="ESTANDAR"/>
+        <enumeration value="PERSONALIZADO"/>        
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="TipoProductoMensajeria">
+      <restriction base="string">
+        <enumeration value="AHORROS"/>
+        <enumeration value="CORRIENTES"/>        
+        <enumeration value="TARJETA_CREDITO"/>
+        <enumeration value="TARJETA_DEBITO"/>
+        <enumeration value="VIRTUAL"/>
+        <enumeration value="NO_APLICA"/>
+      </restriction>
+    </simpleType>
+    
+    <simpleType name="EstadosGenerales">
+      <restriction base="string">
+        <enumeration value="ACTIVO"/>
+        <enumeration value="INACTIVO"/>                
+      </restriction>
+    </simpleType>
+        
+</schema>

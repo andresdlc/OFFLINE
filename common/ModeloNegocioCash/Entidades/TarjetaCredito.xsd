@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema targetNamespace="http://www.bolivariano.com/TarjetaCredito"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:trjc="http://www.bolivariano.com/TarjetaCredito">
+	<xs:element name="TarjetaCredito" type="trjc:TarjetaCredito" />
+	<xs:complexType name="TarjetaCredito">
+		<xs:sequence>
+			<xs:element name="codigoUnico" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>codigo unico de la tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+			</xs:element>
+                        <xs:element name="idInterno" type="xs:int" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>codigo numerico interno de la tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+			</xs:element>
+                        <xs:element name="numeroTarjeta" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>Numero de tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+			</xs:element>
+			<xs:element name="numeroEnmascarado" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>Numero de tarjeta enmascarada</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+			<xs:element name="nombrePlastico" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>nombre del cliente impreso en el plastico de la tarjeta</xs:documentation>
+                            </xs:annotation>
+			</xs:element>
+                        <xs:element name="tipo" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>tipo de tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+			</xs:element>
+                        <xs:element name="cvv" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>cvv de la tarjeta</xs:documentation>
+                            </xs:annotation>
+			</xs:element>
+			<xs:element name="idBancoEmisor" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+				<xs:documentation>identificacion del banco emisor</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="estado" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+				<xs:documentation>estado de la tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="tieneChip" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+				<xs:documentation>bandera que indica si la tarjeta tiene chip o no</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+			<xs:element name="idProductoInterno" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+				<xs:documentation>identificacion de producto interno Tarjeta credito = 42</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+			<xs:element name="idSubProducto" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+				<xs:documentation>id de subproducto</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+			<xs:element name="cupo" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="cupoAsignado" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="cupoDisponible" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="cupoEmpresa" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="cupoUtilizado" type="xs:float" minOccurs="0" maxOccurs="1" />						                        
+			<xs:element name="fechaVencimiento" type="xs:date" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+				<xs:documentation>fecha de vencimiento de tarjeta</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+			<xs:element name="fechaEmision" type="xs:date" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+				<xs:documentation>fecha de emision de tarjeta</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+			<xs:element name="fechaVencimientoServicio" type="xs:date" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                    <xs:documentation>fecha de vencimiento del servicio de tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+			</xs:element>
+			<xs:element name="monto" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoAprobado" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoDesembolso" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoDisponible" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoDistribuido" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoFinanciar" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoPorDistribuir" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoPorProcesar" type="xs:float" minOccurs="0" maxOccurs="1" />
+			<xs:element name="montoProceso" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="moneda" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="minimoPagar" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="deudaTotal" type="xs:double" minOccurs="0" maxOccurs="1" />
+			
+			<xs:element name="fechaTopePago" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="fechaCorte" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="deudaVencida" type="xs:double" minOccurs="0" maxOccurs="1" nillable="false" />
+			<xs:element name="saldoInicial" type="xs:double" minOccurs="0" maxOccurs="1" nillable="false" />
+			<xs:element name="saldoFinal" type="xs:double" minOccurs="0" maxOccurs="1" nillable="false" />
+                        
+                        <xs:element name="puntosDisponibles" type="xs:integer" minOccurs="0" maxOccurs="1" nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>Cantidad de puntos acumulados en la tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+			<xs:element name="puntosRedimidos" type="xs:integer" minOccurs="0" maxOccurs="1" nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>Cantidad de puntos redimidos o canjeados del mes anterior</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="marca" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>marca de la tarjeta de credito</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="codigoMatrizPermisos" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>codigo para hacer matching con la matriz de permisos</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="tipoProducto" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false" default="TARJETA_DE_CREDITO">
+                            <xs:annotation>
+                                <xs:documentation>codigo del tipo de producto, valor fijo</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="numeroCuenta" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>campo de identificacion interna dela tarjeta por cliente</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+		</xs:sequence>
+	</xs:complexType>	
+</xs:schema>

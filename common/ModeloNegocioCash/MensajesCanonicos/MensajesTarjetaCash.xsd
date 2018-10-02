@@ -1,0 +1,258 @@
+<xs:schema targetNamespace="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mcr="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash" xmlns:mbl="http://www.bolivariano.com/MensajeBolivariano" xmlns:Q1="http://www.bolivariano.com/Cuenta" xmlns:Q2="http://www.bolivariano.com/Recaudo" xmlns:Q3="http://www.bolivariano.com/Cliente" xmlns:trjc="http://www.bolivariano.com/TarjetaCredito" xmlns:enum="http://www.bolivariano.com/Enumerados" xmlns:pais="http://www.bolivariano.com/Pais" xmlns:res="http://www.bolivariano.com/Restricciones">
+ <xs:import schemaLocation="../Entidades/Cliente.xsd" namespace="http://www.bolivariano.com/Cliente"/>
+ <xs:import schemaLocation="../Entidades/Recaudo.xsd" namespace="http://www.bolivariano.com/Recaudo"/>
+ <xs:import schemaLocation="../Entidades/Cuenta.xsd" namespace="http://www.bolivariano.com/Cuenta"/>
+ <xs:import schemaLocation="../Entidades/MensajeBolivariano.xsd" namespace="http://www.bolivariano.com/MensajeBolivariano"/>
+ <xs:import schemaLocation="../Entidades/TarjetaCredito.xsd" namespace="http://www.bolivariano.com/TarjetaCredito"/>
+ <xs:import schemaLocation="../Entidades/Enumerados.xsd" namespace="http://www.bolivariano.com/Enumerados"/>
+ <xs:import schemaLocation="../Entidades/Pais.xsd" namespace="http://www.bolivariano.com/Pais"/>
+ <xs:import schemaLocation="../Entidades/Restricciones.xsd" namespace="http://www.bolivariano.com/Restricciones"/>
+ <!--    deshabilitar uso internacional  -->
+ <xs:element name="MensajeEntradaDeshabilitarUsoInternacional" type="mcr:MensajeEntradaDeshabilitarUsoInternacional"/>
+ <xs:element name="MensajeSalidaDeshabilitarUsoInternacional" type="mcr:MensajeSalidaDeshabilitarUsoInternacional"/>
+ <!--    Habilitar uso internacional  -->
+ <xs:element name="MensajeEntradaHabilitarUsoInternacional" type="mcr:MensajeEntradaHabilitarUsoInternacional"/>
+ <xs:element name="MensajeSalidaHabilitarUsoInternacional" type="mcr:MensajeSalidaHabilitarUsoInternacional"/>
+ <xs:element name="TarjetaFault" type="mcr:TarjetaFault"/>
+ 
+ <!--   bloquear tarjetas   -->
+ <xs:element name="MensajeEntradaBloquearTarjeta" type="mcr:MensajeEntradaBloquearTarjeta"/>
+ <xs:element name="MensajeSalidaBloquearTarjeta" type="mcr:MensajeSalidaBloquearTarjeta"/>
+ 
+ <!--   pagar tarjeta credito   -->
+ <xs:element name="MensajeEntradaPagarTarjetaCredito" type="mcr:MensajeEntradaPagarTarjetaCredito"/>
+ <xs:element name="MensajeSalidaPagarTarjetaCredito" type="mcr:MensajeSalidaPagarTarjetaCredito"/>
+ 
+ <xs:complexType name="MensajeEntradaBloquearTarjeta">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeEntrada">
+    <xs:sequence>
+     <xs:element name="tarjeta" type="trjc:TarjetaCredito" maxOccurs="1" minOccurs="1" nillable="false"/>
+     <xs:element name="tipoTarjeta" type="xs:string" maxOccurs="1" minOccurs="1" nillable="false"/>
+     <xs:element name="motivo" type="xs:string" maxOccurs="1" minOccurs="1" nillable="false"/>
+    </xs:sequence>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ <xs:complexType name="MensajeSalidaBloquearTarjeta">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeSalida"/>
+  </xs:complexContent>
+ </xs:complexType>
+ <xs:complexType name="Tarjeta">
+  <xs:sequence>
+   <xs:element type="enum:TipoTarjeta" name="tipoTarjeta" minOccurs="1" maxOccurs="1" nillable="false"/>
+   <xs:element type="xs:string" name="codigoTarjeta" minOccurs="1" maxOccurs="1" nillable="false"/>
+  </xs:sequence>
+ </xs:complexType>
+ <xs:complexType name="MensajeEntradaDeshabilitarUsoInternacional">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeEntrada">
+    <xs:sequence>
+     <xs:element name="tarjetas" minOccurs="1" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>listado de tarjetas de debito o credit oa procesar</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="tarjeta" minOccurs="0" maxOccurs="unbounded" nillable="false" type="mcr:Tarjeta"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element name="fechaInicio" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>fecha de inicio del rango de tiempo de deshabilitacion</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="fechaFin" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>fecha de fin del rango de tiempo de deshabilitacion</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+    </xs:sequence>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ <xs:complexType name="MensajeSalidaDeshabilitarUsoInternacional">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeSalida"/>
+  </xs:complexContent>
+ </xs:complexType>
+ <xs:complexType name="MensajeEntradaHabilitarUsoInternacional">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeEntrada">
+    <xs:sequence>
+     <xs:element name="tipoIdentificacion" type="enum:TipoIdentificacionPersona" minOccurs="1" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>tipo de identificacion del cliente que desea habilitar el uso internacional</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="identificacion" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>identificacion del cliente que desea habilitar el uso internacional</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="fechaInicio" minOccurs="1" maxOccurs="1" nillable="true" type="xs:date">
+      <xs:annotation>
+       <xs:documentation>fecha inicial del uso internacional</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="fechaFin" minOccurs="1" maxOccurs="1" nillable="true" type="xs:date">
+      <xs:annotation>
+       <xs:documentation>fecha final del uso internacional</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="tarjetas" minOccurs="1" maxOccurs="1" nillable="true">
+      <xs:annotation>
+       <xs:documentation>listado de tarjetas de debito o credito</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="tarjeta" minOccurs="1" maxOccurs="unbounded" nillable="false">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element name="tipoTarjeta" type="enum:TipoTarjeta" minOccurs="1" maxOccurs="1" nillable="false"/>
+           <xs:element name="identificador" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element name="paises" minOccurs="1" maxOccurs="1" nillable="true">
+      <xs:annotation>
+       <xs:documentation>listado de paises</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="pais" type="pais:Pais" minOccurs="1" maxOccurs="unbounded" nillable="false"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ <xs:complexType name="MensajeSalidaHabilitarUsoInternacional">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeSalida">
+    <xs:sequence/>
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ 
+ <xs:complexType name="MensajeSalidaPagarTarjetaCredito">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeSalida">    
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ <xs:complexType name="MensajeEntradaPagarTarjetaCredito">
+  <xs:complexContent>
+   <xs:extension base="mbl:MensajeEntrada">
+    <xs:sequence>
+     <xs:element name="tipoCuentaDebito" type="enum:TipoCuenta" minOccurs="1" maxOccurs="1">
+      <xs:annotation>
+       <xs:documentation>tipo de cuenta de debito</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="subProductoCuentaDebito" type="enum:Subproducto" minOccurs="0" maxOccurs="1">
+      <xs:annotation>
+       <xs:documentation>tipo de cuenta de debito</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="cuentaDebito" type="xs:string" minOccurs="1" maxOccurs="1">
+      <xs:annotation>
+       <xs:documentation>cuenta de debito</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="comision" type="xs:double" minOccurs="1" maxOccurs="1">
+      <xs:annotation>
+       <xs:documentation>comision a cobrar por el pago de tarjeta</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="montoPago" type="xs:double" minOccurs="1" maxOccurs="1">
+      <xs:annotation>
+       <xs:documentation>monto del pago a realizar</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="codigoUnicoTarjeta" type="xs:string" minOccurs="1" maxOccurs="1">
+      <xs:annotation>
+       <xs:documentation>codigo unico o numero de tarjeta, el numero en claro se usa para SPI y PagoDirecto</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="tipoIdentificacionBeneficiario" type="enum:TipoIdentificacionPersona" minOccurs="0" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>tipo de identificacion del beneficiario, se usa para SPI y pagodirecto</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="identificacionBeneficiario" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>numero de identificacion del beneficiario, se usa para SPI y pagodirecto</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="codigoBancoBeneficiario" type="xs:integer" minOccurs="0" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>codigo del banco beneficiario</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="nombreBeneficiario" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>nombre del beneficiario</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+     <xs:element name="concepto" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>motivo del pago de tarjeta</xs:documentation>
+      </xs:annotation>
+     </xs:element>  
+     <xs:element name="tipoPago" type="mcr:TipoPago" minOccurs="1" maxOccurs="1" nillable="false">
+     <xs:annotation>
+      <xs:documentation>tipo de pago(PROPIAS, TERCEROS U OTROS_BANCOS)</xs:documentation>
+     </xs:annotation>
+    </xs:element>
+    <xs:element name="tipoProceso" type="mcr:TipoProceso" minOccurs="0" maxOccurs="1" nillable="false">
+     <xs:annotation>
+      <xs:documentation>tipo de pago (SPI u Pago Directo)</xs:documentation>
+     </xs:annotation>
+    </xs:element>
+    <xs:element name="moneda" type="xs:string" minOccurs="1" maxOccurs="1" >
+     <xs:annotation>
+      <xs:documentation>tipo de pago(PROPIAS, TERCEROS U OTROS_BANCOS)</xs:documentation>
+     </xs:annotation>
+    </xs:element>
+    <xs:element name="referencia" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false">
+      <xs:annotation>
+       <xs:documentation>Referencia</xs:documentation>
+      </xs:annotation>
+     </xs:element>
+    </xs:sequence>    
+   </xs:extension>
+  </xs:complexContent>
+ </xs:complexType>
+ 
+ 
+ <xs:simpleType name="TipoPago">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="PROPIAS"/>
+   <xs:enumeration value="TERCEROS"/>
+   <xs:enumeration value="OTROS_BANCOS"/>   
+  </xs:restriction>
+ </xs:simpleType>
+ 
+ <xs:simpleType name="TipoProceso">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="SPI"/>
+   <xs:enumeration value="PAGO_DIRECTO"/>   
+  </xs:restriction>
+ </xs:simpleType>
+ 
+ <!-- FAULT -->
+ <xs:complexType name="TarjetaFault">
+  <xs:sequence>
+   <xs:element name="codigo" type="xs:string"/>
+   <xs:element name="nombre" type="xs:string"/>
+   <xs:element name="descripcion" type="xs:string"/>
+  </xs:sequence>
+ </xs:complexType>
+</xs:schema>

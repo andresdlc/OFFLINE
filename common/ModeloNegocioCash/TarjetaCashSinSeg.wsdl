@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.bolivariano.com/CashManagement/ws/TarjetaCash"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="TarjetaCash" targetNamespace="http://www.bolivariano.com/CashManagement/ws/TarjetaCash"
+	xmlns:xsd1="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import
+				namespace="http://www.bolivariano.com/CashManagement/MensajesTarjetaCash"
+				schemaLocation="MensajesCanonicos/MensajesTarjetaCash.xsd"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="pagarTarjetaRequest">
+		<wsdl:part name="part" element="xsd1:MensajeEntradaPagarTarjetaCredito" />
+	</wsdl:message>
+	<wsdl:message name="pagarTarjetaResponse">
+		<wsdl:part element="xsd1:MensajeSalidaPagarTarjetaCredito" name="part" />
+	</wsdl:message>
+	<wsdl:message name="deshabilitarUsoInternacionalRequest">
+		<wsdl:part name="part"
+			element="xsd1:MensajeEntradaDeshabilitarUsoInternacional" />
+	</wsdl:message>
+	<wsdl:message name="deshabilitarUsoInternacionalResponse">
+		<wsdl:part name="part"
+			element="xsd1:MensajeSalidaDeshabilitarUsoInternacional" />
+	</wsdl:message>
+	<wsdl:message name="habilitarUsoInternacionalRequest">
+		<wsdl:part name="part"
+			element="xsd1:MensajeEntradaHabilitarUsoInternacional" />
+	</wsdl:message>
+	<wsdl:message name="habilitarUsoInternacionalResponse">
+		<wsdl:part name="part"
+			element="xsd1:MensajeSalidaHabilitarUsoInternacional" />
+	</wsdl:message>
+	<wsdl:message name="bloquearTarjetaRequest">
+		<wsdl:part name="part" element="xsd1:MensajeEntradaBloquearTarjeta" />
+	</wsdl:message>
+	<wsdl:message name="bloquearTarjetaResponse">
+		<wsdl:part name="part" element="xsd1:MensajeSalidaBloquearTarjeta" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="TarjetaCashPortType">
+		<wsdl:operation name="pagarTarjetaCredito">
+   <wsdl:documentation>
+    este metodo permite realizar el pago de tarjetas de credito propias, terceros, y otros bancos, este metodo solo recibe pagos con debito a cuentas
+   </wsdl:documentation>
+   <wsdl:input message="tns:pagarTarjetaRequest" />
+			<wsdl:output message="tns:pagarTarjetaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="deshabilitarUsoInternacional">
+			<wsdl:input message="tns:deshabilitarUsoInternacionalRequest" />
+			<wsdl:output message="tns:deshabilitarUsoInternacionalResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="habilitarUsoInternacional">
+			<wsdl:input message="tns:habilitarUsoInternacionalRequest" />
+			<wsdl:output message="tns:habilitarUsoInternacionalResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="bloquearTarjeta">
+			<wsdl:input message="tns:bloquearTarjetaRequest" />
+			<wsdl:output message="tns:bloquearTarjetaResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+	<wsdl:binding name="TarjetaCashSOAP11Binding" type="tns:TarjetaCashPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="pagarTarjetaCredito">
+			<soap:operation style="document"
+				soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/pagar" />
+			<wsdl:input>
+				<soap:body use="literal" parts="part" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" parts="part" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="deshabilitarUsoInternacional">
+			<soap:operation style="document"
+				soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/deshabilitarUsoInternacional" />
+			<wsdl:input>
+				<soap:body use="literal" parts="part" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" parts="part" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="habilitarUsoInternacional">
+			<soap:operation style="document"
+				soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/habilitarUsoInternacional" />
+			<wsdl:input>
+				<soap:body use="literal" parts="part" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" parts="part" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="bloquearTarjeta">
+			<soap:operation style="document"
+				soapAction="http://www.bolivariano.com/CashManagement/ws/TarjetaCash/bloquearTarjeta" />
+			<wsdl:input>
+				<soap:body use="literal" parts="part" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" parts="part" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+
+	<wsdl:service name="TarjetaCashService">
+		<wsdl:port name="TarjetaCashService" binding="tns:TarjetaCashSOAP11Binding">
+			<soap:address location="http://www.example.com" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
